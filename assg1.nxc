@@ -2,7 +2,7 @@
 
 #define BLACK_TILE 1
 #define WHITE_TILE 0
-#define ON_TILE(a) (SENSOR_1 < BLACK_MAX) == a
+#define ON(a) (SENSOR_1 < BLACK_MAX) == a
 
 #define TURN_SPEED 40          //
 #define STRAIGHT_SPEED 40      //
@@ -10,11 +10,11 @@
 #define ROT_LEFT_PIV 100       //
 #define ROT_RIGHT_PIV -100     //
 
-#define ARC_INC 5              //
+#define ARC_INC 2              //
 
 #define LOCKUP_WAIT 100        //Wait time between sequential Motor commands, to prevent motor lockup
 
-inline void turnOffMotors(){
+inline void StopMotors(){
       OffEx(OUT_BC, RESET_ALL);
       Wait(LOCKUP_WAIT);
 }
@@ -32,23 +32,23 @@ void rotateArcLength(int pivot, int arcLength){
        Wait(ARC_INC);
        currArcLength++;
      }
-     turnOffMotors();
+     StopMotors();
 }
 
 int countArcLength(int pivot, int tileColour){ //needs better name
      int arcLength = 0;
 
      OnFwdSync(OUT_BC, TURN_SPEED, pivot);
-     while( ON_TILE(tileColour) ){
+     while( ON( tileColour ) ){
        Wait(ARC_INC);
        arcLength++;
      }
-     turnOffMotors();
+     StopMotors();
 
      return arcLength;
 }
 
-void alignOnTile(int tileColour){
+void alignOn(int tileColour){
      int leftDistance, rightDistance;
 
      leftDistance = countArcLength(ROT_LEFT_PIV, tileColour);
@@ -57,9 +57,9 @@ void alignOnTile(int tileColour){
      rotateArcLength(ROT_LEFT_PIV, rightDistance);
 
      if (rightDistance > leftDistance) {
-         rotateArcLength(ROT_RIGHT_PIV, (rightDistance - leftDistance) );
+         rotateArcLength(ROT_RIGHT_PIV, ((rightDistance - leftDistance) * 15 )/ 10 );
      } else {
-         rotateArcLength(ROT_LEFT_PIV, (leftDistance - rightDistance) );
+         rotateArcLength(ROT_LEFT_PIV, ((leftDistance - rightDistance) * 15 ) / 10);
      }
 }
 
@@ -68,12 +68,18 @@ task main(){
 
      while(true){
 
-         alignOnTile(BLACK_TILE);
-         OnFwdSync(OUT_BC, STRAIGHT_SPEED, 0);
-         while(SENSOR_1 < BLACK_MAX){}
+         if( ON( BLACK_TILE ) ){
+           alignOn( BLACK_TILE );
+           OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+           until( ON( WHITE_TILE ) );
+           StopMotors();
+         }
 
-         alignOnTile(WHITE_TILE);
-         OnFwdSync(OUT_BC, STRAIGHT_SPEED, 0);
-         while(SENSOR_1 > BLACK_MAX){}
+         if( ON( WHITE_TILE ) ){
+           alignOn( WHITE_TILE );
+           OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+           until( ON( BLACK_TILE ) );
+           StopMotors();
+         }
      }
 }

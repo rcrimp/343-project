@@ -2,53 +2,56 @@
 Index	Identifier	Type	Flag	Data	Size	RefCount
 0	__D0rotateArcLength	6	1	0	4	5
 1	__D0SetSensorLight_inline_setup	6	1	4	4	3
-2	__D0main	6	1	8	4	12
-3	__D0alignOnTile	6	1	12	4	3
+2	__D0main	6	1	8	4	28
+3	__D0alignOn	6	1	12	4	3
 4	__D0countArcLength	6	1	16	4	10
-5	__signed_stack_001main	6	1	20	4	8
+5	__DU0SetSensorLight_inline_setup	5	1	20	4	2
 6	__signed_stack_001rotateArcLength	6	1	24	4	4
-7	__signed_stack_001countArcLength	6	1	28	4	6
-8	__DU0SetSensorLight_inline_setup	5	1	32	4	2
-9	__signed_stack_001alignOnTile	6	1	36	4	2
-10	__rotateArcLength_7qG2_arcLength_7qG2_000	4	1	40	2	5
-11	__countArcLength_7qG2_arcLength_7qG2_000	4	1	42	2	4
-12	__countArcLength_7qG2_tileColour_7qG2_000	4	1	44	2	3
-13	__rotateArcLength_7qG2_pivot_7qG2_000	4	1	46	2	5
-14	__countArcLength_7qG2_pivot_7qG2_000	4	1	48	2	3
-15	__alignOnTile_7qG2_rightDistance_7qG2_000	4	1	50	2	5
-16	__rotateArcLength_7qG2_currArcLength_7qG2_000	4	1	52	2	4
-17	__alignOnTile_7qG2_leftDistance_7qG2_000	4	1	54	2	5
-18	__alignOnTile_7qG2_tileColour_7qG2_000	4	1	56	2	4
-19	__rotateArcLength_return	1	1	58	1	6
-20	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLight_inline_setup	1	1	59	1	2
-21	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup	1	1	60	1	2
-22	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLight_inline_setup	1	1	61	1	2
-23	__countArcLength_return	1	1	62	1	5
-24	__alignOnTile_return	1	1	63	1	4
-25	____initialize_global_data_return	1	1	64	1	3
-26	__constVal96	2	0	65	1	6
-27	__constVal63	2	0	66	1	4
-28	__constVal127	2	0	67	1	2
-29	__ResetSensorTmp	1	1	68	1	2
-30	__zfmain	1	1	69	1	8
-31	__ResetSensorPort	1	1	70	1	3
-32	__zfrotateArcLength	1	1	71	1	3
-33	____ResetSensorSubroutine_return	1	1	72	1	3
-34	__zfalignOnTile	1	1	73	1	3
-35	__constVal7	2	0	74	1	4
-36	__zfcountArcLength	1	1	75	1	5
-37	__constVal2	2	0	76	1	4
-38	__constVal3	2	0	77	1	2
-39	__setup_return	1	1	78	1	3
-40	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup	1	1	79	1	2
-41	__SetSensorLight_7qG2_bActive_7qG2_000_inline_setup	1	1	80	1	2
-42	__SetSensorLight_7qG2_port_7qG2_000_inline_setup	1	1	81	1	4
-43	__constVal0	2	1	82	1	15
-44	__zfSetSensorLight_inline_setup	1	1	83	1	2
-45	__constVal32	2	0	84	1	18
-46	__constVal1	2	0	85	1	3
-47	__OUT_BC	7	0	86	4	6
-48	__OUT_BC.__OUT_BC_type	1	0	0	1	0
+7	__Wait_7qG2_ms_7qG2_000_inline_StopMotors_inline_main	5	1	28	4	2
+8	__signed_stack_001main	6	1	32	4	20
+9	__signed_stack_001alignOn	6	1	36	4	10
+10	__signed_stack_001countArcLength	6	1	40	4	6
+11	__rotateArcLength_7qG2_arcLength_7qG2_000	4	1	44	2	5
+12	__countArcLength_7qG2_arcLength_7qG2_000	4	1	46	2	4
+13	__countArcLength_7qG2_tileColour_7qG2_000	4	1	48	2	3
+14	__rotateArcLength_7qG2_pivot_7qG2_000	4	1	50	2	5
+15	__countArcLength_7qG2_pivot_7qG2_000	4	1	52	2	3
+16	__alignOn_7qG2_rightDistance_7qG2_000	4	1	54	2	5
+17	__rotateArcLength_7qG2_currArcLength_7qG2_000	4	1	56	2	4
+18	__alignOn_7qG2_leftDistance_7qG2_000	4	1	58	2	5
+19	__alignOn_7qG2_tileColour_7qG2_000	4	1	60	2	4
+20	__rotateArcLength_return	1	1	62	1	6
+21	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLight_inline_setup	1	1	63	1	2
+22	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup	1	1	64	1	2
+23	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLight_inline_setup	1	1	65	1	2
+24	__countArcLength_return	1	1	66	1	5
+25	__alignOn_return	1	1	67	1	4
+26	____initialize_global_data_return	1	1	68	1	3
+27	__constVal96	2	0	69	1	8
+28	__constVal63	2	0	70	1	4
+29	__constVal127	2	0	71	1	4
+30	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup	1	1	72	1	2
+31	__zfmain	1	1	73	1	26
+32	__constVal2	2	0	74	1	4
+33	__zfrotateArcLength	1	1	75	1	3
+34	____ResetSensorSubroutine_return	1	1	76	1	3
+35	__zfcountArcLength	1	1	77	1	5
+36	__constVal15	2	0	78	1	2
+37	__constVal7	2	0	79	1	4
+38	__constVal10	2	0	80	1	2
+39	__zfalignOn	1	1	81	1	3
+40	__ResetSensorTmp	1	1	82	1	2
+41	__setup_return	1	1	83	1	3
+42	__constVal32	2	0	84	1	24
+43	__SetSensorLight_7qG2_bActive_7qG2_000_inline_setup	1	1	85	1	2
+44	__SetSensorLight_7qG2_port_7qG2_000_inline_setup	1	1	86	1	4
+45	__constVal1	2	0	87	1	3
+46	__zfSetSensorLight_inline_setup	1	1	88	1	2
+47	__ResetSensorPort	1	1	89	1	3
+48	__constVal0	2	1	90	1	25
+49	__constVal3	2	0	91	1	4
+50	__OUT_BC	7	0	92	4	8
+51	__OUT_BC.__OUT_BC_type	1	0	0	1	0
 #SOURCES
 Clump	Line	PC	Source
 0	65	0	#line 65 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
@@ -62,71 +65,157 @@ Clump	Line	PC	Source
 0	69	7	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 0	70	7		tst 5, __zfmain, __D0main
 0	69	10	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	70	10		brtst 4, __NXC_Label_677, __zfmain
+0	70	10		brtst 4, __NXC_Label_681, __zfmain
 0	69	13	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	70	13		set __alignOnTile_7qG2_tileColour_7qG2_000, 1
-0	69	16	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	70	16	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	71	16		subcall alignOnTile, __alignOnTile_return
-0	70	18	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	70	18	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	71	18		set __signed_stack_001main, 40
-0	70	21	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	70	21	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	71	21		set __D0main, 0
-0	71	24	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	72	24	#pragma macro 7
-0	72	24		setout __OUT_BC, 2, __signed_stack_001main, 1, __constVal7, 8, __constVal2, 7, __D0main, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
-0	7067	47	#line 7067 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	71	47	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	71	47	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	72	47		getin __signed_stack_001main, __constVal0, 4
-0	71	51	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	71	51	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	72	51		set __D0main, 50
-0	71	54	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	72	54		cmp 0, __zfmain, __signed_stack_001main, __D0main
-0	71	58	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	72	58		mov __D0main, __zfmain
-0	71	60	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	72	60		brtst 4, __NXC_Label_687, __zfmain
-0	73	63	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	74	63		jmp __NXC_Label_686
-0	73	65	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	73	65	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	74	65		set __alignOnTile_7qG2_tileColour_7qG2_000, 0
-0	73	68	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	74	68	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	75	68		subcall alignOnTile, __alignOnTile_return
-0	74	70	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	74	70	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	75	70		set __signed_stack_001main, 40
-0	74	73	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	74	73	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	75	73		set __D0main, 0
-0	75	76	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	76	76	#pragma macro 7
-0	76	76		setout __OUT_BC, 2, __signed_stack_001main, 1, __constVal7, 8, __constVal2, 7, __D0main, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
-0	7108	99	#line 7108 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	75	99	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	75	99	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	76	99		getin __signed_stack_001main, __constVal0, 4
-0	75	103	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	75	103	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	76	103		set __D0main, 50
-0	75	106	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	76	106		cmp 1, __zfmain, __signed_stack_001main, __D0main
-0	75	110	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	76	110		mov __D0main, __zfmain
-0	75	112	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	76	112		brtst 4, __NXC_Label_697, __zfmain
-0	77	115	#line 77 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	78	115		jmp __NXC_Label_696
-0	77	117	#line 77 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	79	117	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	80	117		jmp __NXC_Label_676
-0	79	119	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	80	119		exit -1, -1
+0	70	13		getin __signed_stack_001main, __constVal0, 4
+0	69	17	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	69	17	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	70	17		set __D0main, 50
+0	69	20	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	70	20		cmp 0, __zfmain, __signed_stack_001main, __D0main
+0	69	24	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	70	24		mov __signed_stack_001main, __zfmain
+0	69	26	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	69	26	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	70	26		set __D0main, 1
+0	69	29	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	70	29		cmp 4, __zfmain, __signed_stack_001main, __D0main
+0	69	33	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	70	33		mov __D0main, __zfmain
+0	70	35	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	71	35		brtst 4, __NXC_Label_688, __zfmain
+0	70	38	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	71	38		set __alignOn_7qG2_tileColour_7qG2_000, 1
+0	70	41	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	71	41	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	72	41		subcall alignOn, __alignOn_return
+0	71	43	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	71	43	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	72	43		set __signed_stack_001main, 40
+0	71	46	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	71	46	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	72	46		set __D0main, 0
+0	72	49	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	73	49	#pragma macro 7
+0	73	49		setout __OUT_BC, 2, __signed_stack_001main, 1, __constVal7, 8, __constVal2, 7, __D0main, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+0	7197	72	#line 7197 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	72	72	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	72	72	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	73	72		getin __signed_stack_001main, __constVal0, 4
+0	72	76	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	72	76	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	73	76		set __D0main, 50
+0	72	79	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	73	79		cmp 0, __zfmain, __signed_stack_001main, __D0main
+0	72	83	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	73	83		mov __signed_stack_001main, __zfmain
+0	72	85	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	72	85	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	73	85		set __D0main, 0
+0	72	88	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	73	88		cmp 4, __zfmain, __signed_stack_001main, __D0main
+0	72	92	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	72	92	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	73	92		not __D0main, __zfmain
+0	73	95	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	74	95		tst 5, __zfmain, __D0main
+0	73	98	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	74	98		brtst 4, __NXC_Label_696, __zfmain
+0	73	101	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	73	101	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	74	101		jmp __NXC_Label_695
+0	73	103	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	17	103	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	18	103	#pragma macro 7
+0	18	103		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+0	7240	126	#line 7240 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	17	126	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	17	126	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	18	126		set __Wait_7qG2_ms_7qG2_000_inline_StopMotors_inline_main, 100
+0	17	129	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	7956	129	#line 7956 "NXCDefs.h"
+0	7957	129		wait 100
+0	7957	131	#line 7957 "NXCDefs.h"
+0	18	131	#line 18 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	74	131	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	76	131	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	76	131	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	77	131		getin __signed_stack_001main, __constVal0, 4
+0	76	135	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	76	135	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	77	135		set __D0main, 50
+0	76	138	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	77	138		cmp 0, __zfmain, __signed_stack_001main, __D0main
+0	76	142	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	77	142		mov __signed_stack_001main, __zfmain
+0	76	144	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	76	144	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	77	144		set __D0main, 0
+0	76	147	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	77	147		cmp 4, __zfmain, __signed_stack_001main, __D0main
+0	76	151	#line 76 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	77	151		mov __D0main, __zfmain
+0	77	153	#line 77 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	78	153		brtst 4, __NXC_Label_707, __zfmain
+0	77	156	#line 77 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	78	156		set __alignOn_7qG2_tileColour_7qG2_000, 0
+0	77	159	#line 77 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	78	159	#line 78 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	79	159		subcall alignOn, __alignOn_return
+0	78	161	#line 78 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	78	161	#line 78 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	79	161		set __signed_stack_001main, 40
+0	78	164	#line 78 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	78	164	#line 78 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	79	164		set __D0main, 0
+0	79	167	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	80	167	#pragma macro 7
+0	80	167		setout __OUT_BC, 2, __signed_stack_001main, 1, __constVal7, 8, __constVal2, 7, __D0main, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+0	7299	190	#line 7299 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	79	190	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	79	190	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	80	190		getin __signed_stack_001main, __constVal0, 4
+0	79	194	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	79	194	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	80	194		set __D0main, 50
+0	79	197	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	80	197		cmp 0, __zfmain, __signed_stack_001main, __D0main
+0	79	201	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	80	201		mov __signed_stack_001main, __zfmain
+0	79	203	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	79	203	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	80	203		set __D0main, 1
+0	79	206	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	80	206		cmp 4, __zfmain, __signed_stack_001main, __D0main
+0	79	210	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	79	210	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	80	210		not __D0main, __zfmain
+0	80	213	#line 80 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	81	213		tst 5, __zfmain, __D0main
+0	80	216	#line 80 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	81	216		brtst 4, __NXC_Label_715, __zfmain
+0	80	219	#line 80 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	80	219	#line 80 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	81	219		jmp __NXC_Label_714
+0	80	221	#line 80 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	17	221	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	18	221	#pragma macro 7
+0	18	221		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+0	7338	244	#line 7338 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	17	244	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	17	244	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	18	244		set __Wait_7qG2_ms_7qG2_000_inline_StopMotors_inline_main, 100
+0	17	247	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	7956	247	#line 7956 "NXCDefs.h"
+0	7957	247		wait 100
+0	7957	249	#line 7957 "NXCDefs.h"
+0	18	249	#line 18 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	81	249	#line 81 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	83	249	#line 83 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	85	249	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	86	249		jmp __NXC_Label_680
+0	85	251	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	86	251		exit -1, -1
 1	4915	0		setin __constVal1, __ResetSensorPort, 5
 1	4917	4		getin __ResetSensorTmp, __ResetSensorPort, 5
 1	4918	8		brtst 5, __SensorStillInvalid, __ResetSensorTmp
@@ -174,7 +263,7 @@ Clump	Line	PC	Source
 2	3724	39	#pragma macro 4
 2	3724	39		mov __ResetSensorPort, __SetSensorLight_7qG2_port_7qG2_000_inline_setup
 2	3724	41		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
-2	6657	43	#line 6657 "NXCDefs.h"
+2	6735	43	#line 6735 "NXCDefs.h"
 2	3724	43	#line 3724 "NXCDefs.h"
 2	3761	43	#line 3761 "NXCDefs.h"
 2	22	43	#line 22 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
@@ -197,7 +286,7 @@ Clump	Line	PC	Source
 3	29	8	#line 29 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	30	8	#pragma macro 7
 3	30	8		setout __OUT_BC, 2, __signed_stack_001rotateArcLength, 1, __constVal7, 8, __constVal2, 7, __D0rotateArcLength, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
-3	6709	31	#line 6709 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	6787	31	#line 6787 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	29	31	#line 29 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	29	31	#line 29 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	30	31		mov __signed_stack_001rotateArcLength, __rotateArcLength_7qG2_currArcLength_7qG2_000
@@ -213,7 +302,7 @@ Clump	Line	PC	Source
 3	30	44	#line 30 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	30	44	#line 30 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	7956	44	#line 7956 "NXCDefs.h"
-3	7957	44		wait 5
+3	7957	44		wait 2
 3	7957	46	#line 7957 "NXCDefs.h"
 3	31	46	#line 31 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	32	46	#line 32 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
@@ -225,7 +314,7 @@ Clump	Line	PC	Source
 3	17	52	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	18	52	#pragma macro 7
 3	18	52		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-3	6752	75	#line 6752 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	6830	75	#line 6830 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	17	75	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	17	75	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 3	17	75	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
@@ -247,7 +336,7 @@ Clump	Line	PC	Source
 4	40	8	#line 40 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	41	8	#pragma macro 7
 4	41	8		setout __OUT_BC, 2, __signed_stack_001countArcLength, 1, __constVal7, 8, __constVal2, 7, __D0countArcLength, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
-4	6799	31	#line 6799 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	6877	31	#line 6877 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	40	31	#line 40 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	40	31	#line 40 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	41	31		getin __signed_stack_001countArcLength, __constVal0, 4
@@ -270,7 +359,7 @@ Clump	Line	PC	Source
 4	41	55	#line 41 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	41	55	#line 41 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	7956	55	#line 7956 "NXCDefs.h"
-4	7957	55		wait 5
+4	7957	55		wait 2
 4	7957	57	#line 7957 "NXCDefs.h"
 4	42	57	#line 42 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	43	57	#line 43 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
@@ -282,7 +371,7 @@ Clump	Line	PC	Source
 4	17	63	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	18	63	#pragma macro 7
 4	18	63		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-4	6852	86	#line 6852 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	6930	86	#line 6930 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	17	86	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	17	86	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 4	17	86	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
@@ -302,19 +391,19 @@ Clump	Line	PC	Source
 5	53	0		set __countArcLength_7qG2_pivot_7qG2_000, 100
 5	52	3	#line 52 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	52	3	#line 52 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	53	3		mov __countArcLength_7qG2_tileColour_7qG2_000, __alignOnTile_7qG2_tileColour_7qG2_000
+5	53	3		mov __countArcLength_7qG2_tileColour_7qG2_000, __alignOn_7qG2_tileColour_7qG2_000
 5	52	5	#line 52 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	53	5	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	54	5		subcall countArcLength, __countArcLength_return
 5	53	7	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	54	7		mov __alignOnTile_7qG2_leftDistance_7qG2_000, __D0countArcLength
+5	54	7		mov __alignOn_7qG2_leftDistance_7qG2_000, __D0countArcLength
 5	53	9	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	53	9	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	53	9	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	54	9		set __rotateArcLength_7qG2_pivot_7qG2_000, -100
 5	53	12	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	53	12	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	54	12		mov __rotateArcLength_7qG2_arcLength_7qG2_000, __alignOnTile_7qG2_leftDistance_7qG2_000
+5	54	12		mov __rotateArcLength_7qG2_arcLength_7qG2_000, __alignOn_7qG2_leftDistance_7qG2_000
 5	53	14	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	54	14	#line 54 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	55	14		subcall rotateArcLength, __rotateArcLength_return
@@ -323,34 +412,34 @@ Clump	Line	PC	Source
 5	55	16		set __countArcLength_7qG2_pivot_7qG2_000, -100
 5	54	19	#line 54 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	54	19	#line 54 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	55	19		mov __countArcLength_7qG2_tileColour_7qG2_000, __alignOnTile_7qG2_tileColour_7qG2_000
+5	55	19		mov __countArcLength_7qG2_tileColour_7qG2_000, __alignOn_7qG2_tileColour_7qG2_000
 5	54	21	#line 54 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	55	21	#line 55 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	56	21		subcall countArcLength, __countArcLength_return
 5	55	23	#line 55 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	56	23		mov __alignOnTile_7qG2_rightDistance_7qG2_000, __D0countArcLength
+5	56	23		mov __alignOn_7qG2_rightDistance_7qG2_000, __D0countArcLength
 5	55	25	#line 55 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	55	25	#line 55 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	55	25	#line 55 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	56	25		set __rotateArcLength_7qG2_pivot_7qG2_000, 100
 5	55	28	#line 55 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	55	28	#line 55 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	56	28		mov __rotateArcLength_7qG2_arcLength_7qG2_000, __alignOnTile_7qG2_rightDistance_7qG2_000
+5	56	28		mov __rotateArcLength_7qG2_arcLength_7qG2_000, __alignOn_7qG2_rightDistance_7qG2_000
 5	55	30	#line 55 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	57	30	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	58	30		subcall rotateArcLength, __rotateArcLength_return
 5	57	32	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	57	32	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	58	32		mov __signed_stack_001alignOnTile, __alignOnTile_7qG2_rightDistance_7qG2_000
+5	58	32		mov __signed_stack_001alignOn, __alignOn_7qG2_rightDistance_7qG2_000
 5	57	34	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	57	34	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	58	34		mov __D0alignOnTile, __alignOnTile_7qG2_leftDistance_7qG2_000
+5	58	34		mov __D0alignOn, __alignOn_7qG2_leftDistance_7qG2_000
 5	57	36	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	58	36		cmp 1, __zfalignOnTile, __signed_stack_001alignOnTile, __D0alignOnTile
+5	58	36		cmp 1, __zfalignOn, __signed_stack_001alignOn, __D0alignOn
 5	57	40	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	58	40		mov __D0alignOnTile, __zfalignOnTile
+5	58	40		mov __D0alignOn, __zfalignOn
 5	58	42	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	59	42		brtst 4, __NXC_Label_662, __zfalignOnTile
+5	59	42		brtst 4, __NXC_Label_662, __zfalignOn
 5	58	45	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	59	45		set __rotateArcLength_7qG2_pivot_7qG2_000, -100
 5	58	48	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
@@ -358,36 +447,52 @@ Clump	Line	PC	Source
 5	58	48	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	58	48	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
 5	58	48	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	59	48		sub __rotateArcLength_7qG2_arcLength_7qG2_000, __alignOnTile_7qG2_rightDistance_7qG2_000, __alignOnTile_7qG2_leftDistance_7qG2_000
+5	59	48		sub __signed_stack_001alignOn, __alignOn_7qG2_rightDistance_7qG2_000, __alignOn_7qG2_leftDistance_7qG2_000
 5	58	52	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	59	52	#line 59 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	60	52		subcall rotateArcLength, __rotateArcLength_return
-5	59	54	#line 59 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	60	54	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	61	54		jmp __NXC_Label_669
-5	60	56	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	61	56		set __rotateArcLength_7qG2_pivot_7qG2_000, 100
-5	60	59	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	60	59	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	60	59	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	60	59	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	60	59	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	61	59		sub __rotateArcLength_7qG2_arcLength_7qG2_000, __alignOnTile_7qG2_leftDistance_7qG2_000, __alignOnTile_7qG2_rightDistance_7qG2_000
-5	60	63	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	61	63	#line 61 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	62	63		subcall rotateArcLength, __rotateArcLength_return
-5	61	65	#line 61 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	64	65	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	64	65	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	65	65		subret __alignOnTile_return
-6	80	0	#line 80 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-6	81	0		subret ____initialize_global_data_return
+5	58	52	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	58	52	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	59	52		mul __signed_stack_001alignOn, __signed_stack_001alignOn, __constVal15
+5	58	56	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	58	56	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	58	56	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	59	56		div __rotateArcLength_7qG2_arcLength_7qG2_000, __signed_stack_001alignOn, __constVal10
+5	58	60	#line 58 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	59	60	#line 59 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	60		subcall rotateArcLength, __rotateArcLength_return
+5	59	62	#line 59 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	62	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	61	62		jmp __NXC_Label_671
+5	60	64	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	61	64		set __rotateArcLength_7qG2_pivot_7qG2_000, 100
+5	60	67	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	67	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	67	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	67	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	67	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	61	67		sub __signed_stack_001alignOn, __alignOn_7qG2_leftDistance_7qG2_000, __alignOn_7qG2_rightDistance_7qG2_000
+5	60	71	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	71	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	71	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	61	71		mul __signed_stack_001alignOn, __signed_stack_001alignOn, __constVal15
+5	60	75	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	75	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	60	75	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	61	75		div __rotateArcLength_7qG2_arcLength_7qG2_000, __signed_stack_001alignOn, __constVal10
+5	60	79	#line 60 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	61	79	#line 61 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	62	79		subcall rotateArcLength, __rotateArcLength_return
+5	61	81	#line 61 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	64	81	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	64	81	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	65	81		subret __alignOn_return
+6	86	0	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+6	87	0		subret ____initialize_global_data_return
 #CLUMPS
 Clump	Name	Offset	File
 0	main	0	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-1	__ResetSensorSubroutine	122	NXTDefs.h
-2	setup	135	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-3	rotateArcLength	182	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-4	countArcLength	261	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-5	alignOnTile	355	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-6	__initialize_global_data	422	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
+1	__ResetSensorSubroutine	254	NXTDefs.h
+2	setup	267	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
+3	rotateArcLength	314	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
+4	countArcLength	393	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
+5	alignOn	487	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
+6	__initialize_global_data	570	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
