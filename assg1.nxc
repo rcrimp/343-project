@@ -16,83 +16,76 @@
 
 #define LOCKUP_WAIT 100        //Wait time between sequential Motor commands, to prevent motor lockup
 
+inline void goStraight(){
+    OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+}
+
 inline void StopMotors(){
-      OffEx(OUT_BC, RESET_ALL);
-      Wait(LOCKUP_WAIT);
+    OffEx(OUT_BC, RESET_ALL);
+    Wait(LOCKUP_WAIT);
+}
+
+inline int getCurrentTile(){
+    return ON( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE;
 }
 
 void setup() {
-     SetSensorLight(IN_1, true);
-     Wait(500);
+    SetSensorLight(IN_1, true);
+    Wait(500);
 }
 
 void rotateArcLength(int pivot, int arcLength){
-     int currArcLength = 0;
+    int currArcLength = 0;
 
-     OnFwdSync(OUT_BC, TURN_SPEED, pivot);
-     while(currArcLength <= arcLength){
-       Wait(ARC_INC);
-       currArcLength++;
-     }
-     StopMotors();
+    OnFwdSync(OUT_BC, TURN_SPEED, pivot);
+    while(currArcLength <= arcLength){
+        Wait(ARC_INC);
+        currArcLength++;
+    }
+    StopMotors();
 }
 
-int countArcLength(int pivot){ //needs better name
-     int tileColour, arcLength = 0;
+int countArcLength(int pivot, int currentTile){ //needs better name
+    int tileColour, arcLength = 0;
 
-     /*if( ON( BLACK_TILE ) ){
-         tileColour = BLACK_TILE;
-     } else {
-         tileColour = WHITE_TILE;
-     }*/
+    OnFwdSync(OUT_BC, TURN_SPEED, pivot);
+    while( ON( currentTile ) ){
+        Wait(ARC_INC);
+        arcLength++;
+    }
+    StopMotors();
 
-     tileColour = ON( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE;
-
-     OnFwdSync(OUT_BC, TURN_SPEED, pivot);
-     while( ON( tileColour ) ){
-       Wait(ARC_INC);
-       arcLength++;
-     }
-     StopMotors();
-
-     return arcLength;
+    return arcLength;
 }
 
-void alignOnTile(){
-     int leftDistance, rightDistance, correctionDistance, correctionDirection;
+void alignOnTile(int currentTile ){
+    int leftDistance, rightDistance, correctionDistance, correctionDirection;
 
-     leftDistance = countArcLength(ROT_LEFT_PIV);
-     rotateArcLength(ROT_RIGHT_PIV, leftDistance);
-     rightDistance = countArcLength(ROT_RIGHT_PIV);
-     rotateArcLength(ROT_LEFT_PIV, rightDistance);
+    leftDistance = countArcLength(ROT_LEFT_PIV, currentTile);
+    rotateArcLength(ROT_RIGHT_PIV, leftDistance);
+    rightDistance = countArcLength(ROT_RIGHT_PIV, currentTile);
+    rotateArcLength(ROT_LEFT_PIV, rightDistance);
 
-     if (rightDistance > leftDistance) {
-         correctionDistance = rightDistance - leftDistance;
-         correctionDirection = ROT_RIGHT_PIV;
-     } else {
-         correctionDistance = leftDistance - rightDistance;
-         correctionDirection = ROT_LEFT_PIV;
-     }
-     rotateArcLength(correctionDirection, (correctionDistance * 10 )/ 10 );
+    if (rightDistance > leftDistance) {
+        correctionDistance = rightDistance - leftDistance;
+        correctionDirection = ROT_RIGHT_PIV;
+    } else {
+        correctionDistance = leftDistance - rightDistance;
+        correctionDirection = ROT_LEFT_PIV;
+    }
+    rotateArcLength(correctionDirection, (correctionDistance * 10 )/ 10 );
 }
 
 task main(){
-     setup();
+    setup();
+    int currentTile;
 
-     while(true){
+    while(true){
+        currentTile = getCurrentTile();
 
-         if( ON( BLACK_TILE ) ){
-           alignOnTile();
-           OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
-           until( ON( WHITE_TILE ) );
-           StopMotors();
-         }
-
-         if( ON( WHITE_TILE ) ){
-           alignOnTile();
-           OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
-           until( ON( BLACK_TILE ) );
-           StopMotors();
-         }
-     }
+        alignOnTile( currentTile );
+        goStraight();
+        until( ! ON( currentTile ) );
+        StopMotors();
+    }
 }
