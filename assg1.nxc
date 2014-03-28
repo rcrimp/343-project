@@ -4,13 +4,15 @@
 #define WHITE_TILE 0
 #define ON(a) (SENSOR_1 < BLACK_MAX) == a
 
-#define TURN_SPEED 40          //
+#define THEN_GO OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+
+#define TURN_SPEED 30          //
 #define STRAIGHT_SPEED 40      //
 
 #define ROT_LEFT_PIV 100       //
 #define ROT_RIGHT_PIV -100     //
 
-#define ARC_INC 2              //
+#define ARC_INC 10              //
 
 #define LOCKUP_WAIT 100        //Wait time between sequential Motor commands, to prevent motor lockup
 
@@ -35,8 +37,16 @@ void rotateArcLength(int pivot, int arcLength){
      StopMotors();
 }
 
-int countArcLength(int pivot, int tileColour){ //needs better name
-     int arcLength = 0;
+int countArcLength(int pivot){ //needs better name
+     int tileColour, arcLength = 0;
+
+     /*if( ON( BLACK_TILE ) ){
+         tileColour = BLACK_TILE;
+     } else {
+         tileColour = WHITE_TILE;
+     }*/
+
+     tileColour = ON( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE;
 
      OnFwdSync(OUT_BC, TURN_SPEED, pivot);
      while( ON( tileColour ) ){
@@ -48,19 +58,22 @@ int countArcLength(int pivot, int tileColour){ //needs better name
      return arcLength;
 }
 
-void alignOn(int tileColour){
-     int leftDistance, rightDistance;
+void alignOnTile(){
+     int leftDistance, rightDistance, correctionDistance, correctionDirection;
 
-     leftDistance = countArcLength(ROT_LEFT_PIV, tileColour);
+     leftDistance = countArcLength(ROT_LEFT_PIV);
      rotateArcLength(ROT_RIGHT_PIV, leftDistance);
-     rightDistance = countArcLength(ROT_RIGHT_PIV, tileColour);
+     rightDistance = countArcLength(ROT_RIGHT_PIV);
      rotateArcLength(ROT_LEFT_PIV, rightDistance);
 
      if (rightDistance > leftDistance) {
-         rotateArcLength(ROT_RIGHT_PIV, ((rightDistance - leftDistance) * 15 )/ 10 );
+         correctionDistance = rightDistance - leftDistance;
+         correctionDirection = ROT_RIGHT_PIV;
      } else {
-         rotateArcLength(ROT_LEFT_PIV, ((leftDistance - rightDistance) * 15 ) / 10);
+         correctionDistance = leftDistance - rightDistance;
+         correctionDirection = ROT_LEFT_PIV;
      }
+     rotateArcLength(correctionDirection, (correctionDistance * 10 )/ 10 );
 }
 
 task main(){
@@ -69,14 +82,14 @@ task main(){
      while(true){
 
          if( ON( BLACK_TILE ) ){
-           alignOn( BLACK_TILE );
+           alignOnTile();
            OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
            until( ON( WHITE_TILE ) );
            StopMotors();
          }
 
          if( ON( WHITE_TILE ) ){
-           alignOn( WHITE_TILE );
+           alignOnTile();
            OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
            until( ON( BLACK_TILE ) );
            StopMotors();
