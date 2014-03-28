@@ -61,7 +61,7 @@ void alignOnTile(int currentTile ){
         correctionArcDist = leftArcDist - rightArcDist;
         correctionPivot = TURN_RIGHT_PIVOT;
     }
-    rotateArcDistance(correctionPivot, (correctionArcDist * 32 )/ 100 , -TURN_SPEED);
+    rotateArcDistance(correctionPivot, (correctionArcDist * 30 )/ 100 , -TURN_SPEED);
 }
 void crossTiles(int tileColour, int tileLimit){ //needs beter name
      int tileCount = 0;
@@ -80,6 +80,13 @@ void crossTiles(int tileColour, int tileLimit){ //needs beter name
 }
 
 inline void alignForEnd(){
+    move(14);
+    STOP_MOTORS;
+    donutTurn(90, TURN_RIGHT_PIVOT);
+    STOP_MOTORS;
+    Wait(1000);
+    OnFwdSync(OUT_BC, 100, 100);
+    Wait(5000);
 }
 inline void alignForMiddle(){
     GO_FORWARDS; until( ON_TILE( BLACK_TILE ) ); STOP_MOTORS;
