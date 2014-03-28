@@ -1,0 +1,57 @@
+/*  Henry Barnett  and  Reuben Crimp and leo?  */
+
+/* description of program */
+
+// Moves the turtle by dist(cms). Forward = +, back = -
+sub move(int dist, int power)
+{
+    RotateMotorEx(OUT_BC, power, dist*20, 0, true, true);
+    OffEx(OUT_BC, RESET_ALL);
+}
+
+// rotates the turtle in degrees("degrees") around the wheel "pivot"
+sub donutTurn(int degrees, byte pivot)
+{
+    OffEx(OUT_BC, RESET_ALL);
+    RotateMotor(OUT_C, 50, (degrees*400)/100);// 4 ~ (2*pi*r)/w  where r=11.3 and w=17.7
+    OffEx(OUT_BC, RESET_ALL);
+}
+
+//drive until a change in colour i.e. a different tile is detected
+sub nextColour()
+{
+    int prevL = SENSOR_1;
+    until(SENSOR_1 > (prevL + 5) || SENSOR_1 < (prevL - 5));
+    Wait(75);
+}
+
+task main()
+{
+  int speed = 50;
+  SetSensorLight(IN_1, true);
+
+  OnFwdSync(OUT_BC, speed, 0);
+  //nextColour();                     //to cellotape edge
+  nextColour();                     //to white edge
+  nextColour();                     //to black edge
+  PlayTone(600, 400);
+  move(4, speed);                   //to black centre
+
+  donutTurn(89, OUT_C);             //turn onto first long stretch
+
+  int numBlacks = 0;
+  OnFwdSync(OUT_BC, speed, 0);      //GO!
+  while(numBlacks<13)
+  {
+    nextColour();                   //to next black
+    PlayTone(600, 400);
+    numBlacks++;
+    nextColour();                   //to next white
+  }
+  donutTurn(92, OUT_C);             //turn onto last long stretch
+
+  move(305, speed);                 //GO!
+
+  donutTurn(90, OUT_C);
+}
+

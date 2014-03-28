@@ -1,0 +1,143 @@
+/*  Henry Barnett  and  Reuben Crimp  */
+
+/*
+    Assignment 1 pre alpha v0 0.00.001
+    A program to move from start tile to finish tile.
+    This must move 15 black tiles, turn 90 degrees right,
+    then move 9 large tiles.
+*/
+
+// Moves the turtle by dist(cms). Forward = +, back = -. Tested
+sub move(int dist)
+{
+    RotateMotorEx(OUT_BC, 50, dist*20, 0, true, true);
+    OffEx(OUT_BC, RESET_ALL);
+}
+
+// Turns the turtle by degrees. Right = +, Left = -. Tested
+sub turn(int degrees)
+{
+    //move(-3);
+    RotateMotor(OUT_C, 50, degrees*4);
+    RotateMotor(OUT_B, -50, degrees*4);
+    OffEx(OUT_BC, RESET_ALL);
+    //move(-3);
+}
+
+// Finds the edge directly in front and returns it's relative position (cm). Untested
+sub findEdge()
+{
+    int currentLight = SENSOR_1;
+    int edge = 0;
+
+    while ((SENSOR_1<currentLight+5) && (SENSOR_1>currentLight-5))
+    {
+          move(1);
+          edge += 1;
+    }
+
+    move(-edge);
+    ClearScreen();
+    NumOut(15, LCD_LINE2, edge);
+    turn(45);
+}
+
+/*
+// Lines the bot up with the centre of the square. Untested
+sub findEdges()
+{
+    bool flag = false;
+    int n = findEdge();
+    int ne = findEdge();
+    int e = findEdge();
+    int se = findEdge();
+    int s = findEdge();
+    int sw = findEdge();
+    int w = findEdge();
+    int nw = findEdge();
+    
+    if ((n-s)!=0)
+    {
+	move(n-s);
+	flag = true;
+    }
+    
+    if ((e-w)!=0)
+    {
+	turn(90);
+	move(e-w);
+	turn(-90);
+	flag = true;
+    }
+    if (flag)
+    {
+	findEdges();
+    }
+    else
+    {
+	if ((2*n*n)>(ne*nw))
+	{
+	    int error = (2*n*n)-(ne*nw);
+	    turn(10);
+	    n = findEdge();
+	    ne = findEdge();
+	    turn(-90);
+	    nw = findEdge();
+	    align(error);
+	 }
+    }
+}
+
+// Aligns bot with n edge. Used by findEdges. Untested
+sub align(int error)
+{
+    turn(5);
+    int n = findEdge();
+    int ne = findEdge();
+    turn(-90);
+    int nw = findEdge();
+
+    if (((2*n*n)-(ne*nw))>error)
+    {
+	turn(-10);
+	n = findEdge();
+    	ne = findEdge();
+        turn(-90);
+        nw = findEdge();
+    }
+    error = (2*n*n)-(ne*nw)
+    if ((error>2))
+    {
+       align(error);
+    }
+    else
+    {
+	findEdges();
+    }
+}
+
+sub findSize()
+{
+    int n = findEdge();
+    turn(135);
+    int s = findEdge();
+    turn(135);
+    return n+s;
+}
+
+sub moveBlack(int num)
+{
+    findEdges();
+    int size = findSize();
+    move(num*size);
+}
+ */
+task main()
+{
+    move(1000);
+    //SetSensorLight(IN_1, true);
+     //findEdge();
+     //while(true)
+     {
+     }
+}

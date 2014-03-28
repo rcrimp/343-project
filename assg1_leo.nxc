@@ -1,0 +1,193 @@
+#define THRESHOLD 8 // Threshold variable.
+int light; // Our light variable which is only set at the start.
+int dark; // Our dark variable.
+int count = 0; // The counter which begins at 0.
+
+/*
+ * Subroutine that allows us to set our dark integer variable.
+ */
+sub set_dark() {
+    dark = SENSOR_1;
+    TextOut(0, LCD_LINE1, "Dark", true);
+    NumOut(0, LCD_LINE2, dark);
+}
+
+/*
+ * Subroutine that allows us to set our light integer variable.
+ */
+sub set_light() {
+    light = SENSOR_1;
+    TextOut(0, LCD_LINE3, "Light");
+    NumOut(0, LCD_LINE4, light);
+}
+
+/*
+ * A subroutine that is called after the robot has reached the line of
+ * tiles and turned 90 degrees. It drives forward to the front of the tile
+ * and checks both ways before taking an average and lining itself up correctly.
+ */
+sub first_align(){
+    while (SENSOR_1 <= dark + THRESHOLD){
+        OnFwdReg(OUT_BC, 30, OUT_REGMODE_SYNC); // forward to white
+    }
+    Off(OUT_BC);
+    int left = 0, arc = 0, right = 0; //setting the three variables
+    while (!(SENSOR_1 <= dark + THRESHOLD)){ //while detecting white
+        left++;
+        RotateMotorEx(OUT_BC, 30, -1, -100, true, false); //turn left to black
+    }
+    RotateMotorEx(OUT_BC, 30, left, 100, true, false); // original position
+    Off(OUT_BC);
+    Wait(500);
+    while (!(SENSOR_1 <= dark + THRESHOLD)){
+        right++;
+        RotateMotorEx(OUT_BC, 30, -1, 100, true, false); //check the right side
+    }
+    Off(OUT_BC);
+    arc = (right + left) / 2; //taking the average degrees of both sides
+    Wait(500);
+    RotateMotorEx(OUT_BC, 30, arc, -100, true, false);
+                                            //using average to turn and line up
+    Off(OUT_BC);
+    Wait(500);
+    RotateMotorEx(OUT_BC, 30, -80, 0, true, false);
+                                            //reverse a little back onto black
+    Wait(500);
+}
+
+/*
+ * This subroutine is called from within the alignment subroutine, it checks
+ * left and then if neccessary will also check right. It leaves the robot on a
+ * slightly different angle than when it started.
+ */
+sub check() {
+    RotateMotorEx(OUT_BC, 30, -100, -80, true, true);//Changed to 80 because
+    // the robot needs to reverse so the sensor is in black.
+    if (SENSOR_1 <= dark + THRESHOLD) {
+        RotateMotorEx(OUT_BC, 30, 100, 80, true, true); // back to start pos
+        RotateMotorEx(OUT_BC, 30, -100, 80, true, true);  // checking right
+        if (SENSOR_1 <= dark + THRESHOLD) {
+            RotateMotorEx(OUT_BC, 30, 30, -80, true, true); // rotate left
+        }  else {         // black then white
+            RotateMotorEx(OUT_BC, 30, 115, -80, true, true); // rotate right
+        }
+        Off(OUT_BC);
+    }
+    else {
+        RotateMotorEx(OUT_BC, 30, 115, 80, true, true);
+        Off(OUT_BC);
+    }
+}
+
+/*
+ * This subroutine is called when our robot misses a black square that it has
+ * been expecting from the go_forward(). It tells the robot to reverse back
+ * the same distance over the last black square and then drive forward to the
+ * front of the tile before running the check().
+ */
+sub alignment() {
+    RotateMotorEx(OUT_BC, 50, -420, 0, true, false);
+    while (!(SENSOR_1 <= dark + THRESHOLD)) {
+                                // if on white, drive forward onto a black tile.
+        RotateMotorEx(OUT_BC, 50, 1, 0, true, false);
+    }
+    while (SENSOR_1 <= dark + THRESHOLD) {
+                                // drive forward to the end of the black.
+        RotateMotorEx(OUT_BC, 50, 1, 0, true, false);
+    }
+    Off(OUT_BC);
+    check();
+    RotateMotorEx(OUT_BC, 50, 360, 0, true, false); // move forward to next tile
+}
+
+/*
+ * This subroutine is called when the robot is on a black tile, it will
+ * increment our counter called "count" and will also beep.
+ */
+sub beep(){
+    NumOut(0, LCD_LINE6, count);
+
+    if (SENSOR_1 <= dark + THRESHOLD) {
+                    // If on a black square beep once and increment the count
+        PlayToneEx(562, 400, 7, FALSE);
+        count ++;
+        if (SENSOR_1 <= dark + (THRESHOLD / 2)) {
+                    // Set dark to the current level of reflectivity
+            set_dark();
+        }
+        NumOut(0, LCD_LINE4, dark);
+    }
+}
+
+
+/*
+ * This thread controls the movement of the robot from one black square to the
+ * next, calls the beep subroutine, and contains the (hard) code used to reach
+ * the final marker.
+ */
+task go_forward() {
+    Wait(100);
+    RotateMotorEx(OUT_BC, 10, 10, 0, true, false);
+    RotateMotorEx(OUT_BC, 20, 10, 0, true, false);
+    while (count < 14) {
+                // While Simon hasn't reached 14 squares move forward or align.
+        if (SENSOR_1 <= dark + THRESHOLD){
+                            //if tile is black, go forward and then read again.
+            beep();
+            RotateMotorEx(OUT_BC, 50, 420, 0, true, false);
+        } else {
+            alignment(); //align if the tile isn't black
+        }
+    }
+    Off(OUT_BC);
+
+    //After it has counted 14 squares, rotate and race to finish
+    beep();
+    RotateMotorEx(OUT_B, 30, -340, 0, false, false); // turn right
+    Off(OUT_BC);
+    Wait(300);
+    RotateMotorEx(OUT_BC, 20, 180, 0, true, false);
+    RotateMotorEx(OUT_BC, 50, 180, 0, true, false);
+    RotateMotorEx(OUT_BC, 80, 90, 0, true, false);
+    repeat(27){
+        RotateMotorEx(OUT_BC, 100, 180, 0, true, false);
+    } // forward to line
+}
+
+/*
+ * The main thread contains the code to calibrate Simon's reflectivity
+ * sensor, move him to the first black square, align Simon to be parallel with
+ * the squares and then start the go_foward thread. Also displays text to
+ * help us see the value of "dark" and "light" along the way
+ */
+task main(){
+    Wait(1000);
+    SetSensorLight(IN_1); // Activate our light sensors!
+
+    set_dark(); //setting the starting black square
+    while (SENSOR_1 <= dark + THRESHOLD) {
+        RotateMotorEx(OUT_BC, 50, 1, 0, true, false);
+    }
+    Wait(200);
+    set_light(); //setting the first grey tile
+    while (!(SENSOR_1 <= dark + THRESHOLD)) {
+        RotateMotorEx(OUT_BC, 50, 1, 0, true, false);
+    }
+    Wait(20);
+    set_dark(); //recalibrating black to the square tile
+    while (SENSOR_1 <= dark + THRESHOLD) {
+        RotateMotorEx(OUT_BC, 50, 1, 0, true, false);
+    }
+    Off(OUT_BC);
+    Wait(1000);
+
+    //rotate left so it lines up on the chessboard tiles
+    RotateMotorEx(OUT_B, 30, 90, 0, false, false);
+    RotateMotorEx(OUT_C, 30, -230, 0, false, false);
+    Off(OUT_BC);
+    Wait(1000);
+
+    first_align(); //our alignment right at the beginning
+    TextOut(0, LCD_LINE5, "Count");
+    Precedes(go_forward); //start the go_forward thread
+}

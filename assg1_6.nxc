@@ -1,0 +1,63 @@
+/*Optional: spin gathering sample data for gaussain mixture model
+
+travel to start tile{
+  while(colourChange < 3){
+    if colourChanges by some threshold, colourChange++
+  }
+  travel another few centimetres
+  stop
+}
+
+turn clockwise 90 degrees
+
+travel across 15 black tiles
+
+turn clockwise 90 degrees
+
+travel 3 metres
+
+stop
+*/
+sub rotateLeft(int t){
+    OnFwdSync(OUT_BC, 30, -50);
+    while(t > 0){
+        t--;
+    }
+    OffEx(OT_BC, true);
+}
+
+sub rotateRight(int t){
+    OnFwdSync(OUT_BC, 30, 50);
+    while(t > 0){
+        t--;
+    }
+    OffEx(OT_BC, true);
+}
+
+task main(){
+  int black_tolerance = 50;
+
+  SetSensorLight(IN_1, true);
+
+  int right = 0, left = 0; tmp;
+  OnFwdSync(OUT_BC, 30, 50);
+  while(SENSOR_1 detects black){
+    right++;
+  }
+  OffEx(OUT_BC, true);
+
+  OnFwdSync(OUT_BC, 30, -50);
+  while(SENSOR_1 detects black){
+    left++;
+  }
+  OffEx(OUT_BC, true);
+
+  left -=right;
+ 
+  rotateLeft(left - (left - right));
+
+  OnFwd(OUT_BC, 30);
+  
+
+
+}
