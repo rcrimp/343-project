@@ -1,74 +1,79 @@
 #SYMBOLS
 Index	Identifier	Type	Flag	Data	Size	RefCount
-0	__DU0SetSensorLight_inline_setup	5	1	0	4	2
-1	__D0SetSensorLight_inline_setup	6	1	4	4	3
-2	__D0countArcLength	6	1	8	4	11
-3	__Wait_7qG2_ms_7qG2_000_inline_countArcLength	5	1	12	4	4
-4	__signed_stack_001countArcLength	6	1	16	4	8
-5	__countArcLength_7qG2_tmp_7qG2_000	4	1	20	2	4
-6	__countArcLength_7qG2_pivot_7qG2_000	4	1	22	2	4
-7	__countArcLength_7qG2_arcLength_7qG2_000	4	1	24	2	5
-8	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup	1	1	26	1	2
-9	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup	1	1	27	1	2
-10	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLight_inline_setup	1	1	28	1	2
-11	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLight_inline_setup	1	1	29	1	2
-12	__constVal127	2	0	30	1	2
-13	____initialize_global_data_return	1	1	31	1	3
-14	__constValNeg1	2	0	32	1	1
-15	__countArcLength_return	1	1	33	1	5
-16	__constVal96	2	0	34	1	4
-17	__constVal63	2	0	35	1	2
-18	__SetSensorLight_7qG2_bActive_7qG2_000_inline_setup	1	1	36	1	2
-19	__constVal3	2	0	37	1	2
-20	__ResetSensorPort	1	1	38	1	3
-21	__ResetSensorTmp	1	1	39	1	2
-22	__constVal32	2	0	40	1	12
-23	__constVal1	2	0	41	1	3
-24	__constVal0	2	1	42	1	11
-25	____ResetSensorSubroutine_return	1	1	43	1	3
-26	__zfSetSensorLight_inline_setup	1	1	44	1	2
-27	__setup_return	1	1	45	1	3
-28	__SetSensorLight_7qG2_port_7qG2_000_inline_setup	1	1	46	1	4
-29	__constVal2	2	0	47	1	2
-30	__constVal7	2	0	48	1	2
-31	__zfcountArcLength	1	1	49	1	6
-32	__OUT_BC	7	0	50	4	4
-33	__OUT_BC.__OUT_BC_type	1	0	0	1	0
+0	__D0SetSensorLight_inline_setup	6	1	0	4	3
+1	__D0rotateArcLength	6	1	4	4	5
+2	__D0countArcLength	6	1	8	4	6
+3	__signed_stack_001rotateArcLength	6	1	12	4	4
+4	__signed_stack_001countArcLength	6	1	16	4	4
+5	__DU0SetSensorLight_inline_setup	5	1	20	4	2
+6	__rotateArcLength_7qG2_pivot_7qG2_000	4	1	24	2	2
+7	__countArcLength_7qG2_pivot_7qG2_000	4	1	26	2	4
+8	__rotateArcLength_7qG2_currArcLength_7qG2_000	4	1	28	2	4
+9	__rotateArcLength_7qG2_arcLength_7qG2_000	4	1	30	2	2
+10	__countArcLength_7qG2_arcLength_7qG2_000	4	1	32	2	5
+11	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLight_inline_setup	1	1	34	1	2
+12	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup	1	1	35	1	2
+13	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLight_inline_setup	1	1	36	1	2
+14	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup	1	1	37	1	2
+15	__rotateArcLength_return	1	1	38	1	3
+16	__countArcLength_return	1	1	39	1	5
+17	____initialize_global_data_return	1	1	40	1	3
+18	__constValNeg1	2	0	41	1	1
+19	__constVal96	2	0	42	1	4
+20	__constVal63	2	0	43	1	2
+21	__constVal127	2	0	44	1	2
+22	__zfcountArcLength	1	1	45	1	3
+23	__ResetSensorPort	1	1	46	1	3
+24	__zfrotateArcLength	1	1	47	1	3
+25	__constVal3	2	0	48	1	2
+26	____ResetSensorSubroutine_return	1	1	49	1	3
+27	__ResetSensorTmp	1	1	50	1	2
+28	__constVal7	2	0	51	1	2
+29	__constVal2	2	0	52	1	2
+30	__setup_return	1	1	53	1	3
+31	__SetSensorLight_7qG2_port_7qG2_000_inline_setup	1	1	54	1	4
+32	__SetSensorLight_7qG2_bActive_7qG2_000_inline_setup	1	1	55	1	2
+33	__constVal32	2	0	56	1	12
+34	__constVal1	2	0	57	1	3
+35	__constVal0	2	1	58	1	11
+36	__zfSetSensorLight_inline_setup	1	1	59	1	2
+37	__OUT_BC	7	0	60	4	4
+38	__OUT_BC.__OUT_BC_type	1	0	0	1	0
 #SOURCES
 Clump	Line	PC	Source
-0	39	0	#line 39 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	40	0		subcall __initialize_global_data, ____initialize_global_data_return
-0	39	2	#line 39 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	40	2	#line 40 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	41	2		subcall setup, __setup_return
-0	40	4	#line 40 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	42	4	#line 42 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	43	4		set __countArcLength_7qG2_pivot_7qG2_000, 100
-0	42	7	#line 42 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	43	7	#line 43 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	44	7		subcall countArcLength, __countArcLength_return
-0	43	9	#line 43 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	43	9	#line 43 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	43	9	#line 43 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	43	9	#line 43 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	44	9		set __countArcLength_7qG2_pivot_7qG2_000, -100
-0	43	12	#line 43 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	45	12	#line 45 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	46	12		subcall countArcLength, __countArcLength_return
-0	45	14	#line 45 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	45	14	#line 45 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	45	14	#line 45 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	46	14		exit -1, -1
+0	48	0	#line 48 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	49	0		subcall __initialize_global_data, ____initialize_global_data_return
+0	48	2	#line 48 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	49	2	#line 49 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	50	2		subcall setup, __setup_return
+0	49	4	#line 49 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	51	4	#line 51 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	52	4		set __countArcLength_7qG2_pivot_7qG2_000, 100
+0	51	7	#line 51 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	52	7	#line 52 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	53	7		subcall countArcLength, __countArcLength_return
+0	52	9	#line 52 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	52	9	#line 52 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	52	9	#line 52 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	52	9	#line 52 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	53	9		set __countArcLength_7qG2_pivot_7qG2_000, -100
+0	52	12	#line 52 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	54	12	#line 54 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	55	12		subcall countArcLength, __countArcLength_return
+0	54	14	#line 54 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	54	14	#line 54 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	54	14	#line 54 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	55	14		exit -1, -1
 1	4915	0		setin __constVal1, __ResetSensorPort, 5
 1	4917	4		getin __ResetSensorTmp, __ResetSensorPort, 5
 1	4918	8		brtst 5, __SensorStillInvalid, __ResetSensorTmp
 1	4919	11		subret ____ResetSensorSubroutine_return
-2	12	0	#line 12 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	13	0		set __SetSensorLight_7qG2_port_7qG2_000_inline_setup, 0
-2	12	3	#line 12 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	12	3	#line 12 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	13	3		set __SetSensorLight_7qG2_bActive_7qG2_000_inline_setup, 1
-2	12	6	#line 12 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+2	17	0	#line 17 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	18	0		set __SetSensorLight_7qG2_port_7qG2_000_inline_setup, 0
+2	17	3	#line 17 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	17	3	#line 17 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	18	3		set __SetSensorLight_7qG2_bActive_7qG2_000_inline_setup, 1
+2	17	6	#line 17 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 2	3758	6	#line 3758 "NXCDefs.h"
 2	3759	6		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup, __SetSensorLight_7qG2_port_7qG2_000_inline_setup
 2	3758	8	#line 3758 "NXCDefs.h"
@@ -106,132 +111,142 @@ Clump	Line	PC	Source
 2	3724	39	#pragma macro 4
 2	3724	39		mov __ResetSensorPort, __SetSensorLight_7qG2_port_7qG2_000_inline_setup
 2	3724	41		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
-2	6188	43	#line 6188 "NXCDefs.h"
+2	6579	43	#line 6579 "NXCDefs.h"
 2	3724	43	#line 3724 "NXCDefs.h"
 2	3761	43	#line 3761 "NXCDefs.h"
-2	13	43	#line 13 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	13	43	#line 13 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	13	43	#line 13 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+2	18	43	#line 18 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	18	43	#line 18 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	18	43	#line 18 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 2	7956	43	#line 7956 "NXCDefs.h"
 2	7957	43		wait 500
 2	7957	45	#line 7957 "NXCDefs.h"
-2	14	45	#line 14 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	16	45	#line 16 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	17	45		subret __setup_return
-3	17	0	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	18	0		set __countArcLength_7qG2_tmp_7qG2_000, 0
-3	17	3	#line 17 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	19	3	#line 19 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	20	3		set __countArcLength_7qG2_arcLength_7qG2_000, 0
-3	19	6	#line 19 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	19	6	#line 19 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	20	6		set __signed_stack_001countArcLength, 40
-3	19	9	#line 19 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	19	9	#line 19 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	20	9		mov __D0countArcLength, __countArcLength_7qG2_pivot_7qG2_000
-3	20	11	#line 20 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	21	11	#pragma macro 7
-3	21	11		setout __OUT_BC, 2, __signed_stack_001countArcLength, 1, __constVal7, 8, __constVal2, 7, __D0countArcLength, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
-3	6246	34	#line 6246 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	20	34	#line 20 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	20	34	#line 20 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	21	34		getin __signed_stack_001countArcLength, __constVal0, 4
-3	20	38	#line 20 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	20	38	#line 20 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	21	38		set __D0countArcLength, 50
-3	20	41	#line 20 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	21	41		cmp 0, __zfcountArcLength, __signed_stack_001countArcLength, __D0countArcLength
-3	20	45	#line 20 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	21	45		mov __D0countArcLength, __zfcountArcLength
-3	21	47	#line 21 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	22	47		brtst 4, __NXC_Label_619, __zfcountArcLength
-3	21	50	#line 21 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	22	50		set __Wait_7qG2_ms_7qG2_000_inline_countArcLength, 5
-3	21	53	#line 21 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	7956	53	#line 7956 "NXCDefs.h"
-3	7957	53		wait 5
-3	7957	55	#line 7957 "NXCDefs.h"
-3	22	55	#line 22 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	23	55	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	24	55		add __countArcLength_7qG2_arcLength_7qG2_000, __countArcLength_7qG2_arcLength_7qG2_000, __constVal1
-3	23	59	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	24	59	#line 24 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	25	59		jmp __NXC_Label_618
-3	24	61	#line 24 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	25	61	#line 25 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	26	61	#pragma macro 7
-3	26	61		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-3	6285	84	#line 6285 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	25	84	#line 25 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	25	84	#line 25 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	26	84		set __Wait_7qG2_ms_7qG2_000_inline_countArcLength, 400
-3	25	87	#line 25 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	7956	87	#line 7956 "NXCDefs.h"
-3	7957	87		wait 400
-3	7957	89	#line 7957 "NXCDefs.h"
-3	27	89	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	27	89	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	28	89		set __signed_stack_001countArcLength, 40
-3	27	92	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	27	92	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	27	92	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	27	92	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	27	92	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	28	92		mul __D0countArcLength, __constValNeg1, __countArcLength_7qG2_pivot_7qG2_000
-3	28	96	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	29	96	#pragma macro 7
-3	29	96		setout __OUT_BC, 2, __signed_stack_001countArcLength, 1, __constVal7, 8, __constVal2, 7, __D0countArcLength, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
-3	6316	119	#line 6316 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	28	119	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	28	119	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	29	119		mov __signed_stack_001countArcLength, __countArcLength_7qG2_tmp_7qG2_000
-3	28	121	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	28	121	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	29	121		mov __D0countArcLength, __countArcLength_7qG2_arcLength_7qG2_000
-3	28	123	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	29	123		cmp 2, __zfcountArcLength, __signed_stack_001countArcLength, __D0countArcLength
-3	28	127	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	29	127		mov __D0countArcLength, __zfcountArcLength
-3	29	129	#line 29 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	30	129		brtst 4, __NXC_Label_633, __zfcountArcLength
-3	29	132	#line 29 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	30	132		set __Wait_7qG2_ms_7qG2_000_inline_countArcLength, 5
-3	29	135	#line 29 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	7956	135	#line 7956 "NXCDefs.h"
-3	7957	135		wait 5
-3	7957	137	#line 7957 "NXCDefs.h"
-3	30	137	#line 30 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	31	137	#line 31 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	32	137		add __countArcLength_7qG2_tmp_7qG2_000, __countArcLength_7qG2_tmp_7qG2_000, __constVal1
-3	31	141	#line 31 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	32	141	#line 32 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	33	141		jmp __NXC_Label_632
-3	32	143	#line 32 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	33	143	#line 33 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	34	143	#pragma macro 7
-3	34	143		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-3	6351	166	#line 6351 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	33	166	#line 33 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	33	166	#line 33 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	34	166		set __Wait_7qG2_ms_7qG2_000_inline_countArcLength, 400
-3	33	169	#line 33 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	7956	169	#line 7956 "NXCDefs.h"
-3	7957	169		wait 400
-3	7957	171	#line 7957 "NXCDefs.h"
-3	35	171	#line 35 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	36	171	#line 36 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	37	171		mov __D0countArcLength, __countArcLength_7qG2_arcLength_7qG2_000
-3	36	173	#line 36 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	37	173		subret __countArcLength_return
-3	36	175	#line 36 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	38	175	#line 38 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	39	175		subret __countArcLength_return
-4	48	0	#line 48 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	49	0		subret ____initialize_global_data_return
+2	19	45	#line 19 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	21	45	#line 21 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	22	45		subret __setup_return
+3	24	0	#line 24 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	25	0		set __rotateArcLength_7qG2_currArcLength_7qG2_000, 0
+3	24	3	#line 24 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	24	3	#line 24 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	25	3		set __signed_stack_001rotateArcLength, 40
+3	24	6	#line 24 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	24	6	#line 24 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	25	6		mov __D0rotateArcLength, __rotateArcLength_7qG2_pivot_7qG2_000
+3	25	8	#line 25 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	26	8	#pragma macro 7
+3	26	8		setout __OUT_BC, 2, __signed_stack_001rotateArcLength, 1, __constVal7, 8, __constVal2, 7, __D0rotateArcLength, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+3	6631	31	#line 6631 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	25	31	#line 25 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	25	31	#line 25 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	26	31		mov __signed_stack_001rotateArcLength, __rotateArcLength_7qG2_currArcLength_7qG2_000
+3	25	33	#line 25 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	25	33	#line 25 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	26	33		mov __D0rotateArcLength, __rotateArcLength_7qG2_arcLength_7qG2_000
+3	25	35	#line 25 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	26	35		cmp 2, __zfrotateArcLength, __signed_stack_001rotateArcLength, __D0rotateArcLength
+3	25	39	#line 25 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	26	39		mov __D0rotateArcLength, __zfrotateArcLength
+3	26	41	#line 26 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	27	41		brtst 4, __NXC_Label_619, __zfrotateArcLength
+3	26	44	#line 26 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	26	44	#line 26 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	7956	44	#line 7956 "NXCDefs.h"
+3	7957	44		wait 5
+3	7957	46	#line 7957 "NXCDefs.h"
+3	27	46	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	28	46	#line 28 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	29	46		add __rotateArcLength_7qG2_currArcLength_7qG2_000, __rotateArcLength_7qG2_currArcLength_7qG2_000, __constVal1
+3	28	50	#line 28 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	29	50	#line 29 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	30	50		jmp __NXC_Label_618
+3	29	52	#line 29 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	13	52	#line 13 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	14	52	#pragma macro 7
+3	14	52		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+3	6674	75	#line 6674 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	13	75	#line 13 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	13	75	#line 13 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	13	75	#line 13 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	7956	75	#line 7956 "NXCDefs.h"
+3	7957	75		wait 100
+3	7957	77	#line 7957 "NXCDefs.h"
+3	14	77	#line 14 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	30	77	#line 30 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	32	77	#line 32 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	33	77		subret __rotateArcLength_return
+4	35	0	#line 35 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	36	0		set __countArcLength_7qG2_arcLength_7qG2_000, 0
+4	35	3	#line 35 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	35	3	#line 35 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	36	3		set __signed_stack_001countArcLength, 40
+4	35	6	#line 35 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	35	6	#line 35 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	36	6		mov __D0countArcLength, __countArcLength_7qG2_pivot_7qG2_000
+4	36	8	#line 36 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	37	8	#pragma macro 7
+4	37	8		setout __OUT_BC, 2, __signed_stack_001countArcLength, 1, __constVal7, 8, __constVal2, 7, __D0countArcLength, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+4	6717	31	#line 6717 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	36	31	#line 36 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	36	31	#line 36 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	37	31		getin __signed_stack_001countArcLength, __constVal0, 4
+4	36	35	#line 36 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	36	35	#line 36 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	37	35		set __D0countArcLength, 50
+4	36	38	#line 36 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	37	38		cmp 0, __zfcountArcLength, __signed_stack_001countArcLength, __D0countArcLength
+4	36	42	#line 36 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	37	42		mov __D0countArcLength, __zfcountArcLength
+4	37	44	#line 37 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	38	44		brtst 4, __NXC_Label_631, __zfcountArcLength
+4	37	47	#line 37 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	37	47	#line 37 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	7956	47	#line 7956 "NXCDefs.h"
+4	7957	47		wait 5
+4	7957	49	#line 7957 "NXCDefs.h"
+4	38	49	#line 38 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	39	49	#line 39 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	40	49		add __countArcLength_7qG2_arcLength_7qG2_000, __countArcLength_7qG2_arcLength_7qG2_000, __constVal1
+4	39	53	#line 39 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	40	53	#line 40 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	41	53		jmp __NXC_Label_630
+4	40	55	#line 40 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	13	55	#line 13 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	14	55	#pragma macro 7
+4	14	55		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
+4	6760	78	#line 6760 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	13	78	#line 13 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	13	78	#line 13 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	13	78	#line 13 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	7956	78	#line 7956 "NXCDefs.h"
+4	7957	78		wait 100
+4	7957	80	#line 7957 "NXCDefs.h"
+4	14	80	#line 14 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	42	80	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	42	80	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	42	80	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	42	80	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	42	80	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	43	80		mul __rotateArcLength_7qG2_pivot_7qG2_000, __constValNeg1, __countArcLength_7qG2_pivot_7qG2_000
+4	42	84	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	42	84	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	43	84		mov __rotateArcLength_7qG2_arcLength_7qG2_000, __countArcLength_7qG2_arcLength_7qG2_000
+4	42	86	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	44	86	#line 44 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	45	86		subcall rotateArcLength, __rotateArcLength_return
+4	44	88	#line 44 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	45	88	#line 45 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	46	88		mov __D0countArcLength, __countArcLength_7qG2_arcLength_7qG2_000
+4	45	90	#line 45 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	46	90		subret __countArcLength_return
+4	45	92	#line 45 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	47	92	#line 47 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	48	92		subret __countArcLength_return
+5	57	0	#line 57 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	58	0		subret ____initialize_global_data_return
 #CLUMPS
 Clump	Name	Offset	File
-0	main	0	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
+0	main	0	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
 1	__ResetSensorSubroutine	17	NXTDefs.h
-2	setup	30	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-3	countArcLength	77	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-4	__initialize_global_data	254	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
+2	setup	30	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+3	rotateArcLength	77	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+4	countArcLength	156	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+5	__initialize_global_data	250	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
