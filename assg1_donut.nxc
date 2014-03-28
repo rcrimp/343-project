@@ -12,8 +12,12 @@
 
 #define LOCKUP_WAIT 50        //Wait time between sequential Motor commands, to prevent motor lockup
 
-inline void goStraight(){
-    OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+inline void goBackward(){
+   OnRevSync(OUT_BC, STRAIGHT_SPEED, 0);
+}
+
+inline void goForward(){
+    OnFwdSync(OUT_BC, STRAIGHT_SPEED, 0);
 }
 
 inline void StopMotors(){
@@ -23,11 +27,6 @@ inline void StopMotors(){
 
 inline int getCurrentTile(){
     return ON_TILE( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE;
-}
-
-inline void setup(){
-    SetSensorLight(IN_1, true);
-    Wait(500);
 }
 
 sub move(int dist){
@@ -85,55 +84,58 @@ void alignOnTile(int currentTile ){
     rotateArcDistance(correctionPivot, (correctionArcDist * 30 )/ 100 , -TURN_SPEED);
 }
 
-void alignForFinalStretch(){
-    goStraight();
-    until( ON_TILE( BLACK_TILE ) ); StopMotors();
-    move(5);
-    Wait(100);
-    donutTurn(90, TURN_RIGHT_PIVOT);
-
-    OnRevSync( OUT_BC, STRAIGHT_SPEED, 0);
-    until( ON_TILE( BLACK_TILE ) ); StopMotors();
-    OnRevSync( OUT_BC, STRAIGHT_SPEED, 0);
-    until( ON_TILE( WHITE_TILE ) ); StopMotors();
-    goStraight();
-    until( ON_TILE( BLACK_TILE ) ); StopMotors();
-}
-
 void crossTiles(int tileColour, int tileLimit){ //needs beter name
      int tileCount = 0;
      while(tileCount < tileLimit){
 
-         if ( getCurrentTile() == tileColour){
+         if (getCurrentTile() == tileColour){
             PlayTone(500, 400);
             tileCount++;
             alignOnTile( BLACK_TILE );
-            goStraight();
-            until( ! ON_TILE( BLACK_TILE ) );
-        }else{
-            goStraight();
-            until( ! ON_TILE ( WHITE_TILE ) );
+            goForward(); until( ON_TILE( WHITE_TILE ) ); StopMotors();
+        } else {
+            goForward(); until( ON_TILE ( BLACK_TILE ) );
             Wait(100);
             StopMotors();
         }
     }
 }
 
-void getIntoStartingPosition(){
+inline void alignForEnd(){
+
+}
+
+inline void alignForMiddle(){
+    goForward(); until( ON_TILE( BLACK_TILE ) ); StopMotors();
+    move(5);
+    Wait(100);
+    donutTurn(90, TURN_RIGHT_PIVOT);
+
+    until( ON_TILE( BLACK_TILE ) ); StopMotors();
+    goBackward(); until( ON_TILE( WHITE_TILE ) ); StopMotors();
+    goForward(); until( ON_TILE( BLACK_TILE ) ); StopMotors();
+}
+
+
+inline void alignForStart(){
      int currentTile = getCurrentTile();
-     goStraight();
-     until( ON_TILE( WHITE_TILE ) );
-     goStraight();
-     until( ON_TILE( BLACK_TILE ) );
+     goForward(); until( ON_TILE( WHITE_TILE ) );
+     goForward(); until( ON_TILE( BLACK_TILE ) );
      PlayTone(500, 400);
      move(4);
      donutTurn(90, TURN_RIGHT_PIVOT);
 }
 
+inline void setup(){
+    SetSensorLight(IN_1, true);
+    Wait(500);
+}
+
 task main(){
     setup();
-    getIntoStartingPosition();
+    alignForStart();
     crossTiles(BLACK_TILE, 13); //change this to 13
-    alignForFinalStretch();
+    alignForMiddle();
     crossTiles(BLACK_TILE, 8);
+    alignForEnd();
 }
