@@ -61,7 +61,7 @@ void alignOnTile(int currentTile ){
         correctionArcDist = leftArcDist - rightArcDist;
         correctionPivot = TURN_RIGHT_PIVOT;
     }
-    rotateArcDistance(correctionPivot, (correctionArcDist * 30 )/ 100 , -TURN_SPEED);
+    rotateArcDistance(correctionPivot, (correctionArcDist * 31 )/ 100 , -TURN_SPEED);
 }
 void crossTiles(int tileColour, int tileLimit){ //needs beter name
      int tileCount = 0;
@@ -99,7 +99,6 @@ inline void alignForMiddle(){
     GO_FORWARDS; until( ON_TILE( BLACK_TILE ) ); STOP_MOTORS;
 }
 inline void alignForStart(){
-     int currentTile = CURRENT_TILE;
      GO_FORWARDS; until( ON_TILE( WHITE_TILE ) );
      GO_FORWARDS; until( ON_TILE( BLACK_TILE ) );
      PlayTone(500, 400);
@@ -109,8 +108,9 @@ inline void alignForStart(){
 
 task main(){
     SetSensorLight(IN_1, true);
+
     alignForStart();
-    crossTiles(BLACK_TILE, 13); //change this to 13
+    crossTiles(BLACK_TILE, 13);
     alignForMiddle();
     crossTiles(BLACK_TILE, 8);
     alignForEnd();
