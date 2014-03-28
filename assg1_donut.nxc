@@ -2,9 +2,7 @@
 
 #define BLACK_TILE 1
 #define WHITE_TILE 0
-#define ON(a) (SENSOR_1 < BLACK_MAX) == a
-
-#define THEN_GO OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+#define ON_TILE(a) (SENSOR_1 < BLACK_MAX) == a
 
 #define TURN_SPEED 50          //
 #define STRAIGHT_SPEED 60      //
@@ -26,15 +24,15 @@ inline void StopMotors(){
 }
 
 inline int getCurrentTile(){
-    return ON( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE;
+    return ON_TILE( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE;
 }
 
-void setup() {
+inline void setup() {
     SetSensorLight(IN_1, true);
     Wait(500);
 }
 
-void rotateArcLength(byte pivot, int arcLength, int speed){
+void rotateArcDistance(byte pivot, int arcLength, int speed){
     int currArcLength = 0;
 
     OnFwd( pivot, speed);
@@ -46,12 +44,12 @@ void rotateArcLength(byte pivot, int arcLength, int speed){
     StopMotors();
 }
 
-int countArcLength(byte pivot, int currentTile, int speed){
+int countArcDistance(byte pivot, int currentTile, int speed){
     int tileColour, arcLength = 0;
 
     OnFwd( pivot, speed);
 
-    while( ON( currentTile ) ){
+    while( ON_TILE ( currentTile ) ){
         Wait(ARC_INC);
         arcLength++;
     }
@@ -61,22 +59,22 @@ int countArcLength(byte pivot, int currentTile, int speed){
 }
 
 void alignOnTile(int currentTile ){
-    int leftAngle, rightAngle, correctionAngle;
+    int leftArcDist, rightArcDist, correctionArcDist;
     byte correctionPivot;
 
-    leftDistance = countArcLength(ROT_LEFT_PIV, currentTile, TURN_SPEED);
-    rotateArcLength(ROT_LEFT_PIV, leftDistance, -TURN_SPEED);
-    rightDistance = countArcLength(ROT_RIGHT_PIV, currentTile, TURN_SPEED);
-    rotateArcLength(ROT_RIGHT_PIV, rightDistance, -TURN_SPEED);
+    leftArcDist = countArcDistance(ROT_LEFT_PIV, currentTile, TURN_SPEED);
+    rotateArcDistance(ROT_LEFT_PIV, leftArcDist, -TURN_SPEED);
+    rightArcDist = countArcDistance(ROT_RIGHT_PIV, currentTile, TURN_SPEED);
+    rotateArcDistance(ROT_RIGHT_PIV, rightArcDist, -TURN_SPEED);
 
-    if (rightDistance > leftDistance) {
-        correctionDistance = rightDistance - leftDistance;
-        correctionDirection = ROT_RIGHT_PIV;
+    if (rightArcDist > leftArcDist) {
+        correctionArcDist = rightArcDist - leftArcDist;
+        correctionPivot = ROT_RIGHT_PIV;
     } else {
-        correctionDistance = leftDistance - rightDistance;
-        correctionDirection = ROT_LEFT_PIV;
+        correctionArcDist = leftArcDist - rightArcDist;
+        correctionPivot = ROT_LEFT_PIV;
     }
-    rotateArcLength(correctionDirection, (correctionDistance * 33 )/ 100 , TURN_SPEED);
+    rotateArcDistance(correctionPivot, (correctionArcDist * 33 )/ 100 , TURN_SPEED);
 }
 
 void finalStretch(){
@@ -97,12 +95,12 @@ void traverseSmallTiles(){
             blackTileCount++;
             alignOnTile( currentTile );
             goStraight();
-            until( ! ON( currentTile ) );
+            until( ! ON_TILE( currentTile ) );
         } else {
             goStraight();
-            until( ! ON( WHITE_TILE ) );
-            until( ! ON( BLACK_TILE ) );
-            until( ! ON( WHITE_TILE ) );
+            until( ! ON_TILE ( WHITE_TILE ) );
+            until( ! ON_TILE ( BLACK_TILE ) );
+            until( ! ON_TILE ( WHITE_TILE ) );
             Wait(100);
             StopMotors();
         }
