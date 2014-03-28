@@ -1,35 +1,67 @@
-#define BLACK_MAX 50
-#define TURN_SPEED 50
-#define STRAIGHT_SPEED 50
-#define ROT_LEFT_PIV 50
-#define ROT_RIGHT_PIV -50
+#define BLACK_MAX 50           //light values to be computed at runtime
+
+#define TURN_SPEED 40          //
+#define STRAIGHT_SPEED 50      //
+
+#define ROT_LEFT_PIV 100       //
+#define ROT_RIGHT_PIV -100     //
+
+#define ARC_INC 5              //
+
+#define LOCKUP_WAIT 100        //Wait time between sequential Motor commands, to prevent motor lockup
+
+inline void turnOffMotors(){
+      OffEx(OUT_BC, RESET_ALL);
+      Wait(LOCKUP_WAIT);
+}
 
 void setup() {
      SetSensorLight(IN_1, true);
      Wait(500);
 }
 
-int countAngle(int pivot){ //needs better name
-     int count = 0;
+void rotateArcLength(int pivot, int arcLength){
+     int currArcLength = 0;
+
+     OnFwdSync(OUT_BC, TURN_SPEED, pivot);
+     while(currArcLength <= arcLength){
+       Wait(ARC_INC);
+       currArcLength++;
+     }
+     turnOffMotors();
+}
+
+int countArcLength(int pivot){ //needs better name
+     int arcLength = 0;
+
      OnFwdSync(OUT_BC, TURN_SPEED, pivot);
      while(SENSOR_1 < BLACK_MAX){
-       Wait(10);
-       count++;
+       Wait(ARC_INC);
+       arcLength++;
      }
-     OffEx(OUT_BC, RESET_ALL);
-     Wait(100);
-     return count;
+     turnOffMotors();
+
+     return arcLength;
+}
+
+void alignOnBlack(){
+     int leftDistance, rightDistance;
+
+     leftDistance = countArcLength(ROT_LEFT_PIV);
+     rotateArcLength(ROT_RIGHT_PIV, leftDistance);
+     rightDistance = countArcLength(ROT_RIGHT_PIV);
+
+     if (rightDistance > leftDistance) {
+         rotateArcLength(ROT_LEFT_PIV, rightDistance);
+         rotateArcLength(ROT_RIGHT_PIV, (rightDistance - leftDistance) );
+     } else {
+         rotateArcLength(ROT_LEFT_PIV, rightDistance);
+         rotateArcLength(ROT_LEFT_PIV, (leftDistance - rightDistance) );
+     }
 }
 
 task main(){
      setup();
 
-
-     OnFwdSync(OUT_BC, 50, -50);
-     while(count >= 0){
-     Wait(10);
-     count--;
-
-     }
-     OffEx(OUT_BC, RESET_ALL);
+     alignOnBlack();
 }

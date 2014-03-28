@@ -1,7 +1,11 @@
 #define BLACK_MAX 50           //light values to be computed at runtime
 
+#define BLACK_TILE 1
+#define WHITE_TILE 0
+#define ON_TILE(a) (SENSOR_1 < BLACK_MAX) == a
+
 #define TURN_SPEED 40          //
-#define STRAIGHT_SPEED 50      //
+#define STRAIGHT_SPEED 40      //
 
 #define ROT_LEFT_PIV 100       //
 #define ROT_RIGHT_PIV -100     //
@@ -31,11 +35,11 @@ void rotateArcLength(int pivot, int arcLength){
      turnOffMotors();
 }
 
-int countArcLength(int pivot){ //needs better name
+int countArcLength(int pivot, int tileColour){ //needs better name
      int arcLength = 0;
 
      OnFwdSync(OUT_BC, TURN_SPEED, pivot);
-     while(SENSOR_1 < BLACK_MAX){
+     while( ON_TILE(tileColour) ){
        Wait(ARC_INC);
        arcLength++;
      }
@@ -44,20 +48,17 @@ int countArcLength(int pivot){ //needs better name
      return arcLength;
 }
 
-void alignOnBlack(){
+void alignOnTile(int tileColour){
      int leftDistance, rightDistance;
 
-     leftDistance = countArcLength(ROT_LEFT_PIV);
+     leftDistance = countArcLength(ROT_LEFT_PIV, tileColour);
      rotateArcLength(ROT_RIGHT_PIV, leftDistance);
-     rightDistance = countArcLength(ROT_RIGHT_PIV);
-
-
+     rightDistance = countArcLength(ROT_RIGHT_PIV, tileColour);
+     rotateArcLength(ROT_LEFT_PIV, rightDistance);
 
      if (rightDistance > leftDistance) {
-         rotateArcLength(ROT_LEFT_PIV, rightDistance);
          rotateArcLength(ROT_RIGHT_PIV, (rightDistance - leftDistance) );
      } else {
-         rotateArcLength(ROT_LEFT_PIV, rightDistance);
          rotateArcLength(ROT_LEFT_PIV, (leftDistance - rightDistance) );
      }
 }
@@ -65,5 +66,14 @@ void alignOnBlack(){
 task main(){
      setup();
 
-     alignOnBlack();
+     while(true){
+
+         alignOnTile(BLACK_TILE);
+         OnFwdSync(OUT_BC, STRAIGHT_SPEED, 0);
+         while(SENSOR_1 < BLACK_MAX){}
+
+         alignOnTile(WHITE_TILE);
+         OnFwdSync(OUT_BC, STRAIGHT_SPEED, 0);
+         while(SENSOR_1 > BLACK_MAX){}
+     }
 }
