@@ -1,0 +1,22 @@
+#define BLACK_MAX 50
+
+task main(){
+
+     SetSensorLight(IN_1, true);
+     int count = 0;
+     Wait(500);
+
+     //until(ButtonState(BTN4)){
+     //NumOut(1, LCD_LINE2, SENSOR_1);
+     //}
+     //NumOut(0, LCD_LINE1, count);
+     //NumOut(1, LCD_LINE2, SENSOR_1);
+
+
+     OnFwdSync(OUT_BC, 50, 50);
+     while(SENSOR_1 < BLACK_MAX){
+     count++;
+
+     }
+     OffEx(OUT_BC, RESET_ALL);
+}
