@@ -1,14 +1,12 @@
-#define BLACK_MAX 50           //light values to be computed at runtime
-
 #define BLACK_TILE 1
 #define WHITE_TILE 0
-#define ON_TILE(a) (SENSOR_1 < BLACK_MAX) == a
+#define ON_TILE(a) (SENSOR_1 < 50) == a     // 50 is the bound between black and white
 
-#define TURN_SPEED 50          //
-#define STRAIGHT_SPEED 60      //
+#define TURN_SPEED 40          //
+#define STRAIGHT_SPEED 50      //
 
-#define ROT_LEFT_PIV OUT_B       //
-#define ROT_RIGHT_PIV OUT_C    //
+#define TURN_LEFT_PIVOT OUT_B       //
+#define TURN_RIGHT_PIVOT OUT_C    //
 
 #define ARC_INC 5              //
 
@@ -27,9 +25,19 @@ inline int getCurrentTile(){
     return ON_TILE( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE;
 }
 
-inline void setup() {
+inline void setup(){
     SetSensorLight(IN_1, true);
     Wait(500);
+}
+
+sub move(int dist){
+    RotateMotorEx(OUT_BC, STRAIGHT_SPEED, dist*20, 0, true, true);
+    StopMotors();
+}
+
+sub donutTurn(int degrees, byte pivot){
+    RotateMotor(pivot , TURN_SPEED, (degrees*400)/100);// 4 ~ (2*pi*r)/w  where r=11.3 and w=17.7
+    StopMotors();
 }
 
 void rotateArcDistance(byte pivot, int arcLength, int speed){
@@ -45,7 +53,7 @@ void rotateArcDistance(byte pivot, int arcLength, int speed){
 }
 
 int countArcDistance(byte pivot, int currentTile, int speed){
-    int tileColour, arcLength = 0;
+    int arcLength = 0;
 
     OnFwd( pivot, speed);
 
@@ -62,57 +70,70 @@ void alignOnTile(int currentTile ){
     int leftArcDist, rightArcDist, correctionArcDist;
     byte correctionPivot;
 
-    leftArcDist = countArcDistance(ROT_LEFT_PIV, currentTile, TURN_SPEED);
-    rotateArcDistance(ROT_LEFT_PIV, leftArcDist, -TURN_SPEED);
-    rightArcDist = countArcDistance(ROT_RIGHT_PIV, currentTile, TURN_SPEED);
-    rotateArcDistance(ROT_RIGHT_PIV, rightArcDist, -TURN_SPEED);
+    leftArcDist = countArcDistance(TURN_LEFT_PIVOT, currentTile, TURN_SPEED);
+    rotateArcDistance(TURN_LEFT_PIVOT, leftArcDist, -TURN_SPEED);
+    rightArcDist = countArcDistance(TURN_RIGHT_PIVOT, currentTile, TURN_SPEED);
+    rotateArcDistance(TURN_RIGHT_PIVOT, rightArcDist, -TURN_SPEED);
 
-    if (rightArcDist > leftArcDist) {
+    if (rightArcDist > leftArcDist){
         correctionArcDist = rightArcDist - leftArcDist;
-        correctionPivot = ROT_RIGHT_PIV;
-    } else {
+        correctionPivot = TURN_LEFT_PIVOT;
+    }else{
         correctionArcDist = leftArcDist - rightArcDist;
-        correctionPivot = ROT_LEFT_PIV;
+        correctionPivot = TURN_RIGHT_PIVOT;
     }
-    rotateArcDistance(correctionPivot, (correctionArcDist * 33 )/ 100 , TURN_SPEED);
+    rotateArcDistance(correctionPivot, (correctionArcDist * 30 )/ 100 , -TURN_SPEED);
 }
 
-void finalStretch(){
-    OffEx(OUT_BC, RESET_ALL);
-    RotateMotor(OUT_C, TURN_SPEED, (90*400)/100);// 4 ~ (2*pi*r)/w  where r=11.3 and w=17.7
-    OffEx(OUT_BC, RESET_ALL);
-    RotateMotorEx(OUT_BC, STRAIGHT_SPEED, 302*20, 0, true, true);
-    OffEx(OUT_BC, RESET_ALL);
+void alignForFinalStretch(){
+    goStraight();
+    until( ON_TILE( BLACK_TILE ) ); StopMotors();
+    move(5);
+    Wait(100);
+    donutTurn(90, TURN_RIGHT_PIVOT);
+
+    OnRevSync( OUT_BC, STRAIGHT_SPEED, 0);
+    until( ON_TILE( BLACK_TILE ) ); StopMotors();
+    OnRevSync( OUT_BC, STRAIGHT_SPEED, 0);
+    until( ON_TILE( WHITE_TILE ) ); StopMotors();
+    goStraight();
+    until( ON_TILE( BLACK_TILE ) ); StopMotors();
 }
 
-void traverseSmallTiles(){
-     int currentTile, blackTileCount = 0;
-     while(blackTileCount < 14){
-        currentTile = getCurrentTile();
+void crossTiles(int tileColour, int tileLimit){ //needs beter name
+     int tileCount = 0;
+     while(tileCount < tileLimit){
 
-         if ( currentTile == BLACK_TILE){
+         if ( getCurrentTile() == tileColour){
             PlayTone(500, 400);
-            blackTileCount++;
-            alignOnTile( currentTile );
+            tileCount++;
+            alignOnTile( BLACK_TILE );
             goStraight();
-            until( ! ON_TILE( currentTile ) );
-        } else {
+            until( ! ON_TILE( BLACK_TILE ) );
+        }else{
             goStraight();
-            until( ! ON_TILE ( WHITE_TILE ) );
-            until( ! ON_TILE ( BLACK_TILE ) );
             until( ! ON_TILE ( WHITE_TILE ) );
             Wait(100);
             StopMotors();
         }
-
     }
 }
 
-void getIntoStartingPosition(){}
+void getIntoStartingPosition(){
+     int currentTile = getCurrentTile();
+     goStraight();
+     until( ON_TILE( WHITE_TILE ) );
+     goStraight();
+     until( ON_TILE( BLACK_TILE ) );
+     PlayTone(500, 400);
+     move(4);
+     donutTurn(90, TURN_RIGHT_PIVOT);
+}
 
 task main(){
     setup();
     getIntoStartingPosition();
-    traverseSmallTiles();
-    finalStretch();
+    crossTiles(BLACK_TILE, 13); //change this to 13
+    alignForFinalStretch();
+    crossTiles(BLACK_TILE, 8);
 }
