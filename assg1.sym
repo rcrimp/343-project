@@ -81,32 +81,32 @@ Index	Identifier	Type	Flag	Data	Size	RefCount
 78	__OUT_BC.__OUT_BC_type	1	0	0	1	0
 #SOURCES
 Clump	Line	PC	Source
-0	99	0	#line 99 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	99	0	#line 99 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 0	100	0		subcall __initialize_global_data, ____initialize_global_data_return
-0	99	2	#line 99 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	100	2	#line 100 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	99	2	#line 99 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	100	2	#line 100 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 0	101	2		subcall setup, __setup_return
-0	100	4	#line 100 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	101	4	#line 101 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	100	4	#line 100 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	101	4	#line 101 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 0	102	4		subcall getIntoStartingPosition, __getIntoStartingPosition_return
-0	101	6	#line 101 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	102	6	#line 102 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	101	6	#line 101 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	102	6	#line 102 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 0	103	6		subcall traverseSmallTiles, __traverseSmallTiles_return
-0	102	8	#line 102 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-0	103	8	#line 103 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	102	8	#line 102 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+0	103	8	#line 103 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 0	104	8		subcall finalStretch, __finalStretch_return
-0	103	10	#line 103 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+0	103	10	#line 103 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 0	104	10		exit -1, -1
 1	4915	0		setin __constVal1, __ResetSensorPort, 5
 1	4917	4		getin __ResetSensorTmp, __ResetSensorPort, 5
 1	4918	8		brtst 5, __SensorStillInvalid, __ResetSensorTmp
 1	4919	11		subret ____ResetSensorSubroutine_return
-2	31	0	#line 31 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+2	31	0	#line 31 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 2	32	0		set __SetSensorLight_7qG2_port_7qG2_000_inline_setup, 0
-2	31	3	#line 31 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	31	3	#line 31 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+2	31	3	#line 31 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	31	3	#line 31 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 2	32	3		set __SetSensorLight_7qG2_bActive_7qG2_000_inline_setup, 1
-2	31	6	#line 31 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+2	31	6	#line 31 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 2	3758	6	#line 3758 "NXCDefs.h"
 2	3759	6		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLight_inline_setup, __SetSensorLight_7qG2_port_7qG2_000_inline_setup
 2	3758	8	#line 3758 "NXCDefs.h"
@@ -147,392 +147,392 @@ Clump	Line	PC	Source
 2	4288	43	#line 4288 "NXCDefs.h"
 2	3724	43	#line 3724 "NXCDefs.h"
 2	3761	43	#line 3761 "NXCDefs.h"
-2	32	43	#line 32 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	32	43	#line 32 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+2	32	43	#line 32 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	32	43	#line 32 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 2	33	43		set __Wait_7qG2_ms_7qG2_000_inline_setup, 500
-2	32	46	#line 32 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+2	32	46	#line 32 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 2	7956	46	#line 7956 "NXCDefs.h"
 2	7957	46		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_setup
 2	7957	49	#line 7957 "NXCDefs.h"
-2	33	49	#line 33 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-2	35	49	#line 35 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+2	33	49	#line 33 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+2	35	49	#line 35 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 2	36	49		subret __setup_return
-3	38	0	#line 38 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	38	0	#line 38 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	39	0		set __rotateArcLength_7qG2_currArcLength_7qG2_000, 0
-3	38	3	#line 38 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	38	3	#line 38 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	38	3	#line 38 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	38	3	#line 38 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	39	3		set __signed_stack_001rotateArcLength, 40
-3	38	6	#line 38 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	38	6	#line 38 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	38	6	#line 38 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	38	6	#line 38 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	39	6		mov __D0rotateArcLength, __rotateArcLength_7qG2_pivot_7qG2_000
-3	39	8	#line 39 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	39	8	#line 39 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	40	8	#pragma macro 7
 3	40	8		setout __OUT_BC, 2, __signed_stack_001rotateArcLength, 1, __constVal7, 8, __constVal2, 7, __D0rotateArcLength, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
-3	4340	31	#line 4340 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	39	31	#line 39 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	39	31	#line 39 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	4340	31	#line 4340 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	39	31	#line 39 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	39	31	#line 39 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	40	31		mov __signed_stack_001rotateArcLength, __rotateArcLength_7qG2_currArcLength_7qG2_000
-3	39	33	#line 39 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	39	33	#line 39 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	39	33	#line 39 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	39	33	#line 39 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	40	33		mov __D0rotateArcLength, __rotateArcLength_7qG2_arcLength_7qG2_000
-3	39	35	#line 39 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	39	35	#line 39 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	40	35		cmp 2, __zfrotateArcLength, __signed_stack_001rotateArcLength, __D0rotateArcLength
-3	39	39	#line 39 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	39	39	#line 39 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	40	39		mov __D0rotateArcLength, __zfrotateArcLength
-3	40	41	#line 40 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	40	41	#line 40 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	41	41		brtst 4, __NXC_Label_518, __zfrotateArcLength
-3	40	44	#line 40 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	40	44	#line 40 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	41	44		set __Wait_7qG2_ms_7qG2_000_inline_rotateArcLength, 5
-3	40	47	#line 40 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	40	47	#line 40 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	7956	47	#line 7956 "NXCDefs.h"
 3	7957	47		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_rotateArcLength
 3	7957	50	#line 7957 "NXCDefs.h"
-3	41	50	#line 41 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	42	50	#line 42 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	41	50	#line 41 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	42	50	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	43	50		add __rotateArcLength_7qG2_currArcLength_7qG2_000, __rotateArcLength_7qG2_currArcLength_7qG2_000, __constVal1
-3	42	54	#line 42 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	43	54	#line 43 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	42	54	#line 42 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	43	54	#line 43 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	44	54		jmp __NXC_Label_517
-3	43	56	#line 43 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	23	56	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	43	56	#line 43 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	23	56	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	24	56	#pragma macro 7
 3	24	56		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-3	4383	79	#line 4383 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	23	79	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	23	79	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	4383	79	#line 4383 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	23	79	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	23	79	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	24	79		set __Wait_7qG2_ms_7qG2_000_inline_StopMotors_inline_rotateArcLength, 100
-3	23	82	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	23	82	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	7956	82	#line 7956 "NXCDefs.h"
 3	7957	82		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_StopMotors_inline_rotateArcLength
 3	7957	85	#line 7957 "NXCDefs.h"
-3	24	85	#line 24 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	44	85	#line 44 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-3	46	85	#line 46 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+3	24	85	#line 24 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	44	85	#line 44 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+3	46	85	#line 46 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 3	47	85		subret __rotateArcLength_return
-4	49	0	#line 49 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	49	0	#line 49 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	50	0		set __countArcLength_7qG2_arcLength_7qG2_000, 0
-4	49	3	#line 49 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	49	3	#line 49 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	49	3	#line 49 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	49	3	#line 49 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	50	3		set __signed_stack_001countArcLength, 40
-4	49	6	#line 49 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	49	6	#line 49 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	49	6	#line 49 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	49	6	#line 49 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	50	6		mov __D0countArcLength, __countArcLength_7qG2_pivot_7qG2_000
-4	50	8	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	50	8	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	51	8	#pragma macro 7
 4	51	8		setout __OUT_BC, 2, __signed_stack_001countArcLength, 1, __constVal7, 8, __constVal2, 7, __D0countArcLength, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
-4	4434	31	#line 4434 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	50	31	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	50	31	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	4434	31	#line 4434 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	50	31	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	50	31	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	51	31		getin __signed_stack_001countArcLength, __constVal0, 4
-4	50	35	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	50	35	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	50	35	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	50	35	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	51	35		set __D0countArcLength, 50
-4	50	38	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	50	38	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	51	38		cmp 0, __zfcountArcLength, __signed_stack_001countArcLength, __D0countArcLength
-4	50	42	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	50	42	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	51	42		mov __signed_stack_001countArcLength, __zfcountArcLength
-4	50	44	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	50	44	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	50	44	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	50	44	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	51	44		mov __D0countArcLength, __countArcLength_7qG2_currentTile_7qG2_000
-4	50	46	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	50	46	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	51	46		cmp 4, __zfcountArcLength, __signed_stack_001countArcLength, __D0countArcLength
-4	50	50	#line 50 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	50	50	#line 50 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	51	50		mov __D0countArcLength, __zfcountArcLength
-4	51	52	#line 51 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	51	52	#line 51 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	52	52		brtst 4, __NXC_Label_530, __zfcountArcLength
-4	51	55	#line 51 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	51	55	#line 51 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	52	55		set __Wait_7qG2_ms_7qG2_000_inline_countArcLength, 5
-4	51	58	#line 51 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	51	58	#line 51 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	7956	58	#line 7956 "NXCDefs.h"
 4	7957	58		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_countArcLength
 4	7957	61	#line 7957 "NXCDefs.h"
-4	52	61	#line 52 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	53	61	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	52	61	#line 52 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	53	61	#line 53 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	54	61		add __countArcLength_7qG2_arcLength_7qG2_000, __countArcLength_7qG2_arcLength_7qG2_000, __constVal1
-4	53	65	#line 53 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	54	65	#line 54 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	53	65	#line 53 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	54	65	#line 54 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	55	65		jmp __NXC_Label_529
-4	54	67	#line 54 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	23	67	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	54	67	#line 54 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	23	67	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	24	67	#pragma macro 7
 4	24	67		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-4	4487	90	#line 4487 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	23	90	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	23	90	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	4487	90	#line 4487 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	23	90	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	23	90	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	24	90		set __Wait_7qG2_ms_7qG2_000_inline_StopMotors_inline_countArcLength, 100
-4	23	93	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	23	93	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	7956	93	#line 7956 "NXCDefs.h"
 4	7957	93		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_StopMotors_inline_countArcLength
 4	7957	96	#line 7957 "NXCDefs.h"
-4	24	96	#line 24 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	56	96	#line 56 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	57	96	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	24	96	#line 24 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	56	96	#line 56 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	57	96	#line 57 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	58	96		mov __D0countArcLength, __countArcLength_7qG2_arcLength_7qG2_000
-4	57	98	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	57	98	#line 57 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	58	98		subret __countArcLength_return
-4	57	100	#line 57 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-4	59	100	#line 59 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+4	57	100	#line 57 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+4	59	100	#line 59 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 4	60	100		subret __countArcLength_return
-5	62	0	#line 62 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	62	0	#line 62 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	63	0		set __countArcLength_7qG2_pivot_7qG2_000, 50
-5	62	3	#line 62 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	62	3	#line 62 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	62	3	#line 62 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	62	3	#line 62 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	63	3		mov __countArcLength_7qG2_currentTile_7qG2_000, __alignOnTile_7qG2_currentTile_7qG2_000
-5	62	5	#line 62 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	63	5	#line 63 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	62	5	#line 62 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	63	5	#line 63 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	64	5		subcall countArcLength, __countArcLength_return
-5	63	7	#line 63 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	63	7	#line 63 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	64	7		mov __alignOnTile_7qG2_leftDistance_7qG2_000, __D0countArcLength
-5	63	9	#line 63 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	63	9	#line 63 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	63	9	#line 63 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	63	9	#line 63 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	63	9	#line 63 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	63	9	#line 63 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	64	9		mov __rotateArcLength_7qG2_pivot_7qG2_000, __constValNeg50
-5	63	11	#line 63 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	63	11	#line 63 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	63	11	#line 63 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	63	11	#line 63 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	64	11		mov __rotateArcLength_7qG2_arcLength_7qG2_000, __alignOnTile_7qG2_leftDistance_7qG2_000
-5	63	13	#line 63 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	64	13	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	63	13	#line 63 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	64	13	#line 64 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	65	13		subcall rotateArcLength, __rotateArcLength_return
-5	64	15	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	64	15	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	64	15	#line 64 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	64	15	#line 64 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	65	15		mov __countArcLength_7qG2_pivot_7qG2_000, __constValNeg50
-5	64	17	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	64	17	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	64	17	#line 64 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	64	17	#line 64 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	65	17		mov __countArcLength_7qG2_currentTile_7qG2_000, __alignOnTile_7qG2_currentTile_7qG2_000
-5	64	19	#line 64 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	65	19	#line 65 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	64	19	#line 64 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	65	19	#line 65 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	66	19		subcall countArcLength, __countArcLength_return
-5	65	21	#line 65 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	65	21	#line 65 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	66	21		mov __alignOnTile_7qG2_rightDistance_7qG2_000, __D0countArcLength
-5	65	23	#line 65 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	65	23	#line 65 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	65	23	#line 65 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	65	23	#line 65 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	65	23	#line 65 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	65	23	#line 65 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	66	23		set __rotateArcLength_7qG2_pivot_7qG2_000, 50
-5	65	26	#line 65 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	65	26	#line 65 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	65	26	#line 65 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	65	26	#line 65 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	66	26		mov __rotateArcLength_7qG2_arcLength_7qG2_000, __alignOnTile_7qG2_rightDistance_7qG2_000
-5	65	28	#line 65 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	67	28	#line 67 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	65	28	#line 65 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	67	28	#line 67 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	68	28		subcall rotateArcLength, __rotateArcLength_return
-5	67	30	#line 67 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	67	30	#line 67 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	67	30	#line 67 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	67	30	#line 67 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	68	30		mov __signed_stack_001alignOnTile, __alignOnTile_7qG2_rightDistance_7qG2_000
-5	67	32	#line 67 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	67	32	#line 67 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	67	32	#line 67 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	67	32	#line 67 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	68	32		mov __D0alignOnTile, __alignOnTile_7qG2_leftDistance_7qG2_000
-5	67	34	#line 67 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	67	34	#line 67 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	68	34		cmp 1, __zfalignOnTile, __signed_stack_001alignOnTile, __D0alignOnTile
-5	67	38	#line 67 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	67	38	#line 67 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	68	38		mov __D0alignOnTile, __zfalignOnTile
-5	68	40	#line 68 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	68	40	#line 68 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	69	40		brtst 4, __NXC_Label_561, __zfalignOnTile
-5	68	43	#line 68 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	68	43	#line 68 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	69	43	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	69	43	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	68	43	#line 68 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	68	43	#line 68 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	69	43	#line 69 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	69	43	#line 69 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	70	43		sub __alignOnTile_7qG2_correctionDistance_7qG2_000, __alignOnTile_7qG2_rightDistance_7qG2_000, __alignOnTile_7qG2_leftDistance_7qG2_000
-5	69	47	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	69	47	#line 69 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	70	47	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	69	47	#line 69 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	69	47	#line 69 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	70	47	#line 70 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	71	47		mov __alignOnTile_7qG2_correctionDirection_7qG2_000, __constValNeg50
-5	70	49	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	70	49	#line 70 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	71	49	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	70	49	#line 70 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	70	49	#line 70 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	71	49	#line 71 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	72	49		jmp __NXC_Label_566
-5	71	51	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	71	51	#line 71 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	72	51	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	72	51	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	71	51	#line 71 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	71	51	#line 71 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	72	51	#line 72 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	72	51	#line 72 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	73	51		sub __alignOnTile_7qG2_correctionDistance_7qG2_000, __alignOnTile_7qG2_leftDistance_7qG2_000, __alignOnTile_7qG2_rightDistance_7qG2_000
-5	72	55	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	72	55	#line 72 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	73	55	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	72	55	#line 72 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	72	55	#line 72 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	73	55	#line 73 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	74	55		set __alignOnTile_7qG2_correctionDirection_7qG2_000, 50
-5	73	58	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	73	58	#line 73 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	74	58	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	74	58	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	73	58	#line 73 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	73	58	#line 73 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	74	58	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	74	58	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	75	58		mov __rotateArcLength_7qG2_pivot_7qG2_000, __alignOnTile_7qG2_correctionDirection_7qG2_000
-5	74	60	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	74	60	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	74	60	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	74	60	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	74	60	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	74	60	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	74	60	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	74	60	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	74	60	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	74	60	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	75	60		mul __signed_stack_001alignOnTile, __alignOnTile_7qG2_correctionDistance_7qG2_000, __constVal10
-5	74	64	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	74	64	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	74	64	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	74	64	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	74	64	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	74	64	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	75	64		div __rotateArcLength_7qG2_arcLength_7qG2_000, __signed_stack_001alignOnTile, __constVal10
-5	74	68	#line 74 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	75	68	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	74	68	#line 74 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	75	68	#line 75 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	76	68		subcall rotateArcLength, __rotateArcLength_return
-5	75	70	#line 75 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-5	77	70	#line 77 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+5	75	70	#line 75 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+5	77	70	#line 77 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 5	78	70		subret __alignOnTile_return
-6	79	0	#line 79 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+6	79	0	#line 79 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 6	80	0		subret __finalStretch_return
-7	81	0	#line 81 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	81	0	#line 81 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	82	0		set __traverseSmallTiles_7qG2_blackTileCount_7qG2_000, 0
-7	81	3	#line 81 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	81	3	#line 81 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	81	3	#line 81 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	81	3	#line 81 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	82	3		mov __signed_stack_001traverseSmallTiles, __traverseSmallTiles_7qG2_blackTileCount_7qG2_000
-7	81	5	#line 81 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	81	5	#line 81 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	81	5	#line 81 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	81	5	#line 81 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	82	5		set __D0traverseSmallTiles, 14
-7	81	8	#line 81 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	81	8	#line 81 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	82	8		cmp 0, __zftraverseSmallTiles, __signed_stack_001traverseSmallTiles, __D0traverseSmallTiles
-7	81	12	#line 81 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	81	12	#line 81 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	82	12		mov __D0traverseSmallTiles, __zftraverseSmallTiles
-7	82	14	#line 82 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	82	14	#line 82 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	83	14		brtst 4, __NXC_Label_580, __zftraverseSmallTiles
-7	27	17	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	17	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	17		getin __signed_stack_001getCurrentTile_inline_traverseSmallTiles, __constVal0, 4
-7	27	21	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	27	21	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	21	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	27	21	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	21		set __D0getCurrentTile_inline_traverseSmallTiles, 50
-7	27	24	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	24	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	24		cmp 0, __zfgetCurrentTile_inline_traverseSmallTiles, __signed_stack_001getCurrentTile_inline_traverseSmallTiles, __D0getCurrentTile_inline_traverseSmallTiles
-7	27	28	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	28	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	28		mov __signed_stack_001getCurrentTile_inline_traverseSmallTiles, __zfgetCurrentTile_inline_traverseSmallTiles
-7	27	30	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	27	30	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	30	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	27	30	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	30		set __D0getCurrentTile_inline_traverseSmallTiles, 1
-7	27	33	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	33	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	33		cmp 4, __zfgetCurrentTile_inline_traverseSmallTiles, __signed_stack_001getCurrentTile_inline_traverseSmallTiles, __D0getCurrentTile_inline_traverseSmallTiles
-7	27	37	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	37	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	37		mov __D0getCurrentTile_inline_traverseSmallTiles, __zfgetCurrentTile_inline_traverseSmallTiles
-7	27	39	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	39	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	39		brtst 4, __001__NXC_Label_499, __zfgetCurrentTile_inline_traverseSmallTiles
-7	27	42	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	42	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	42		set __D0getCurrentTile_inline_traverseSmallTiles, 1
-7	27	45	#line 27 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	27	45	#line 27 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	28	45		jmp __001__NXC_Label_500
-7	28	47	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	28	47	#line 28 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	29	47		set __D0getCurrentTile_inline_traverseSmallTiles, 0
-7	28	50	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	28	50	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	28	50	#line 28 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	84	50	#line 84 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	28	50	#line 28 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	28	50	#line 28 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	28	50	#line 28 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	84	50	#line 84 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	85	50		mov __traverseSmallTiles_7qG2_currentTile_7qG2_000, __D0getCurrentTile_inline_traverseSmallTiles
-7	84	52	#line 84 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	84	52	#line 84 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	84	52	#line 84 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	84	52	#line 84 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	84	52	#line 84 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	84	52	#line 84 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	85	52		mov __signed_stack_001traverseSmallTiles, __D0getCurrentTile_inline_traverseSmallTiles
-7	84	54	#line 84 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	84	54	#line 84 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	84	54	#line 84 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	84	54	#line 84 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	85	54		set __D0traverseSmallTiles, 1
-7	84	57	#line 84 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	84	57	#line 84 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	85	57		cmp 4, __zftraverseSmallTiles, __signed_stack_001traverseSmallTiles, __D0traverseSmallTiles
-7	84	61	#line 84 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	84	61	#line 84 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	85	61		mov __D0traverseSmallTiles, __zftraverseSmallTiles
-7	85	63	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	85	63	#line 85 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	86	63		brtst 4, __NXC_Label_587, __zftraverseSmallTiles
-7	85	66	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	85	66	#line 85 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	86	66		set __signed_stack_001traverseSmallTiles, 500
-7	85	69	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	85	69	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	85	69	#line 85 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	85	69	#line 85 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	86	69		set __signed_stack_002traverseSmallTiles, 400
-7	85	72	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	85	72	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	85	72	#line 85 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	85	72	#line 85 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	86	72		set __signed_stack_003traverseSmallTiles, 4
-7	85	75	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	85	75	#line 85 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	85	75	#line 85 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	85	75	#line 85 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	86	75		set __D0traverseSmallTiles, 0
-7	86	78	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	86	78	#line 86 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	87	78		acquire __SPTArgsMutex
-7	86	79	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	86	79	#line 86 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	87	79		mov __SPTArgs.Frequency, __signed_stack_001traverseSmallTiles
-7	86	81	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	86	81	#line 86 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	87	81		mov __SPTArgs.Duration, __signed_stack_002traverseSmallTiles
-7	86	83	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	86	83	#line 86 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	87	83		mov __SPTArgs.Volume, __signed_stack_003traverseSmallTiles
-7	86	85	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	86	85	#line 86 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	87	85		mov __SPTArgs.Loop, __D0traverseSmallTiles
-7	86	87	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	86	87	#line 86 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	87	87		syscall 10, __SPTArgs
-7	86	90	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	86	90	#line 86 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	87	90		mov __D0traverseSmallTiles, __SPTArgs.Result
-7	86	92	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	86	92	#line 86 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	87	92		release __SPTArgsMutex
-7	86	93	#line 86 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	87	93	#line 87 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	86	93	#line 86 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	87	93	#line 87 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	88	93		add __traverseSmallTiles_7qG2_blackTileCount_7qG2_000, __traverseSmallTiles_7qG2_blackTileCount_7qG2_000, __constVal1
-7	87	97	#line 87 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	89	97	#line 89 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	89	97	#line 89 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	87	97	#line 87 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	89	97	#line 89 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	89	97	#line 89 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	90	97		mov __alignOnTile_7qG2_currentTile_7qG2_000, __traverseSmallTiles_7qG2_currentTile_7qG2_000
-7	89	99	#line 89 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	90	99	#line 90 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	89	99	#line 89 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	90	99	#line 90 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	91	99		subcall alignOnTile, __alignOnTile_return
-7	90	101	#line 90 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	18	101	#line 18 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	90	101	#line 90 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	18	101	#line 18 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	19	101		set __signed_stack_001goStraight_inline_traverseSmallTiles, 50
-7	18	104	#line 18 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	18	104	#line 18 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	18	104	#line 18 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	18	104	#line 18 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	19	104		set __D0goStraight_inline_traverseSmallTiles, 0
-7	19	107	#line 19 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	19	107	#line 19 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	20	107	#pragma macro 7
 7	20	107		setout __OUT_BC, 2, __signed_stack_001goStraight_inline_traverseSmallTiles, 1, __constVal7, 8, __constVal2, 7, __D0goStraight_inline_traverseSmallTiles, 6, __constVal32, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
-7	4858	130	#line 4858 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	19	130	#line 19 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	91	130	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	91	130	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	4858	130	#line 4858 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	19	130	#line 19 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	91	130	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	91	130	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	92	130		getin __signed_stack_001traverseSmallTiles, __constVal0, 4
-7	91	134	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	91	134	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	91	134	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	91	134	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	92	134		set __D0traverseSmallTiles, 50
-7	91	137	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	91	137	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	92	137		cmp 0, __zftraverseSmallTiles, __signed_stack_001traverseSmallTiles, __D0traverseSmallTiles
-7	91	141	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	91	141	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	91	141	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	91	141	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	92	141		not __signed_stack_001traverseSmallTiles, __zftraverseSmallTiles
-7	91	144	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	91	144	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	91	144	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	91	144	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	92	144		mov __D0traverseSmallTiles, __traverseSmallTiles_7qG2_currentTile_7qG2_000
-7	91	146	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	91	146	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	92	146		cmp 4, __zftraverseSmallTiles, __signed_stack_001traverseSmallTiles, __D0traverseSmallTiles
-7	91	150	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	91	150	#line 91 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	91	150	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	91	150	#line 91 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	92	150		not __D0traverseSmallTiles, __zftraverseSmallTiles
-7	92	153	#line 92 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	92	153	#line 92 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	93	153		tst 5, __zftraverseSmallTiles, __D0traverseSmallTiles
-7	92	156	#line 92 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	92	156	#line 92 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	93	156		brtst 4, __NXC_Label_599, __zftraverseSmallTiles
-7	92	159	#line 92 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	92	159	#line 92 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	92	159	#line 92 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	92	159	#line 92 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	93	159		jmp __NXC_Label_598
-7	92	161	#line 92 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	23	161	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	92	161	#line 92 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	23	161	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	24	161	#pragma macro 7
 7	24	161		setout __OUT_BC, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal127
-7	4904	184	#line 4904 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	23	184	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	23	184	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	4904	184	#line 4904 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	23	184	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	23	184	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	24	184		set __Wait_7qG2_ms_7qG2_000_inline_StopMotors_inline_traverseSmallTiles, 100
-7	23	187	#line 23 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	23	187	#line 23 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	7956	187	#line 7956 "NXCDefs.h"
 7	7957	187		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_StopMotors_inline_traverseSmallTiles
 7	7957	190	#line 7957 "NXCDefs.h"
-7	24	190	#line 24 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	93	190	#line 93 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	96	190	#line 96 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	24	190	#line 24 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	93	190	#line 93 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	96	190	#line 96 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	97	190		jmp __NXC_Label_579
-7	96	192	#line 96 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
-7	96	192	#line 96 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+7	96	192	#line 96 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
+7	96	192	#line 96 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 7	97	192		subret __traverseSmallTiles_return
-8	98	0	#line 98 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+8	98	0	#line 98 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 8	99	0		subret __getIntoStartingPosition_return
-9	106	0	#line 106 "/home/cshome/r/rcrimp/bricxcc/~temp.nxc"
+9	106	0	#line 106 "/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc"
 9	107	0		subret ____initialize_global_data_return
 #CLUMPS
 Clump	Name	Offset	File
-0	main	0	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
+0	main	0	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
 1	__ResetSensorSubroutine	13	NXTDefs.h
-2	setup	26	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-3	rotateArcLength	77	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-4	countArcLength	164	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-5	alignOnTile	266	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-6	finalStretch	338	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-7	traverseSmallTiles	340	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-8	getIntoStartingPosition	534	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
-9	__initialize_global_data	536	/home/cshome/r/rcrimp/bricxcc/~temp.nxc
+2	setup	26	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+3	rotateArcLength	77	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+4	countArcLength	164	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+5	alignOnTile	266	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+6	finalStretch	338	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+7	traverseSmallTiles	340	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+8	getIntoStartingPosition	534	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc
+9	__initialize_global_data	536	/home/cshome/r/rcrimp/343-project/343-project/assg1.nxc

@@ -1,0 +1,14 @@
+task main(){
+    int pivot = -100;
+
+    while(true){
+        if (ButtonState(BTNLEFT)){
+            pivot += 10;
+        } else if (ButtonState(BTNRIGHT)){
+            pivot -= 10;
+        }
+        until(!ButtonState(BTNLEFT) && !ButtonState(BTNRIGHT));
+        NumOut(0, LCD_LINE1, pivot);
+        OnFwdSync( OUT_BC, 50, pivot);
+    }
+}

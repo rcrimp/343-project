@@ -6,13 +6,13 @@
 
 #define THEN_GO OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
 
-#define TURN_SPEED 30          //
-#define STRAIGHT_SPEED 40      //
+#define TURN_SPEED 40          //
+#define STRAIGHT_SPEED 50      //
 
-#define ROT_LEFT_PIV 100       //
-#define ROT_RIGHT_PIV -100     //
+#define ROT_LEFT_PIV 50       //
+#define ROT_RIGHT_PIV -50     //
 
-#define ARC_INC 10              //
+#define ARC_INC 5              //
 
 #define LOCKUP_WAIT 100        //Wait time between sequential Motor commands, to prevent motor lockup
 
@@ -76,16 +76,30 @@ void alignOnTile(int currentTile ){
     rotateArcLength(correctionDirection, (correctionDistance * 10 )/ 10 );
 }
 
-task main(){
-    setup();
-    int currentTile;
+void finalStretch(){}
 
-    while(true){
+void traverseSmallTiles(){
+     int currentTile, blackTileCount = 0;
+     while(blackTileCount < 14){
         currentTile = getCurrentTile();
+
+         if ( currentTile == BLACK_TILE){
+            PlayTone(500, 400);
+            blackTileCount++;
+        }
 
         alignOnTile( currentTile );
         goStraight();
         until( ! ON( currentTile ) );
         StopMotors();
     }
+}
+
+void getIntoStartingPosition(){}
+
+task main(){
+    setup();
+    getIntoStartingPosition();
+    traverseSmallTiles();
+    finalStretch();
 }
