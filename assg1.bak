@@ -9,9 +9,9 @@ void setup() {
      Wait(500);
 }
 
-int countAngle(int pivot){ //needs better name
+int countLeft(){
      int count = 0;
-     OnFwdSync(OUT_BC, TURN_SPEED, pivot);
+     OnFwdSync(OUT_BC, TURN_SPEED, ROT_LEFT_PIV);
      while(SENSOR_1 < BLACK_MAX){
        Wait(10);
        count++;
@@ -23,7 +23,7 @@ int countAngle(int pivot){ //needs better name
 
 task main(){
      setup();
-
+     int count = 0;
 
      OnFwdSync(OUT_BC, 50, -50);
      while(count >= 0){
