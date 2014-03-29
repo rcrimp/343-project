@@ -1,0 +1,21 @@
+task main(){
+    long t1, t2;
+    while(true){
+
+        OnFwdEx(OUT_B, 30, RESET_NONE);
+
+        t1 = MotorTachoCount(OUT_B);
+        t2 = MotorTachoCount(OUT_C);
+
+        if(ButtonState(BTNLEFT)){
+            ResetAllTachoCounts(OUT_B);
+        }
+        if(ButtonState(BTNRIGHT)){
+            ResetAllTachoCounts(OUT_C);
+        }
+        ClearScreen();
+        NumOut(0, LCD_LINE1, t1);
+        NumOut(0, LCD_LINE2, t2);
+        Wait(100);
+    }
+}
