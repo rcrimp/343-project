@@ -1,105 +1,137 @@
-#define BLACK_MAX 50           //light values to be computed at runtime
-
+  /*
+  * Assignment1_v8.nxc - March 29, 2014
+  * Reuben, Henry, Leo
+  */
 #define BLACK_TILE 1
 #define WHITE_TILE 0
-#define ON(a) (SENSOR_1 < BLACK_MAX) == a
+#define ON_TILE(a) (SENSOR_1 < 45) == a //45 = boundary between black and non-black
+#define CURRENT_TILE (ON_TILE( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE)
 
-#define THEN_GO OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+#define TURN_SPEED 40
+#define STRAIGHT_SPEED 50
+#define LEFT_WHEEL OUT_B
+#define RIGHT_WHEEL OUT_C
+#define LOCKUP_WAIT 50 //ms to wait between sequential sync motor commands
 
-#define TURN_SPEED 40          //
-#define STRAIGHT_SPEED 50      //
+//these should be inline functions but meh....
+#define GO_BACKWARDS OnRevSync(OUT_BC, STRAIGHT_SPEED, 0)
+#define GO_FORWARDS OnFwdSync(OUT_BC, STRAIGHT_SPEED, 0)
+#define STOP_MOTORS OffEx(OUT_BC, RESET_ALL); Wait(LOCKUP_WAIT)
 
-#define ROT_LEFT_PIV 50       //
-#define ROT_RIGHT_PIV -50     //
+//Absolute Value
+long abs(long a){ return ( a > 0 ) ? a : -a; }
 
-#define ARC_INC 5              //
-
-#define LOCKUP_WAIT 100        //Wait time between sequential Motor commands, to prevent motor lockup
-
-inline void goStraight(){
-    OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+//Move robot by dist (cm) in a straight line
+sub move(int dist){
+    RotateMotorEx(OUT_BC, STRAIGHT_SPEED, dist*20, 0, true, true);
+    STOP_MOTORS;
 }
 
-inline void StopMotors(){
-    OffEx(OUT_BC, RESET_ALL);
-    Wait(LOCKUP_WAIT);
+//Rotate the robot about one wheel (pivot) by degrees.
+sub donutTurn(int degrees, byte pivot){
+    RotateMotor(pivot , TURN_SPEED, (degrees*400)/100);
+    STOP_MOTORS;
 }
 
-inline int getCurrentTile(){
-    return ON( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE;
-}
-
-void setup() {
-    SetSensorLight(IN_1, true);
-    Wait(500);
-}
-
-void rotateArcLength(int pivot, int arcLength){
+//Rotate the robot about one wheel (pivot) by some tachometer count (arcLength)
+void rotateArcDistance(byte pivot, long arcLength, int speed){
     int currArcLength = 0;
-
-    OnFwdSync(OUT_BC, TURN_SPEED, pivot);
-    while(currArcLength <= arcLength){
-        Wait(ARC_INC);
-        currArcLength++;
-    }
-    StopMotors();
+    ResetAllTachoCounts(pivot);
+    OnFwdEx( pivot, speed, RESET_NONE);
+    while(abs(MotorTachoCount(pivot)) <= abs(arcLength)){}
+    STOP_MOTORS;
 }
-
-int countArcLength(int pivot, int currentTile){ //needs better name
-    int tileColour, arcLength = 0;
-
-    OnFwdSync(OUT_BC, TURN_SPEED, pivot);
-    while( ON( currentTile ) ){
-        Wait(ARC_INC);
-        arcLength++;
-    }
-    StopMotors();
-
+//returns the arc angle between current location and tile edge in "tochometer count"
+int countArcDistance(byte pivot, int currentTile, int speed){
+    long arcLength;
+    ResetAllTachoCounts(pivot);
+    OnFwdEx(pivot, speed, RESET_NONE);
+    while( ON_TILE ( currentTile ) ){}
+    arcLength = MotorTachoCount(pivot);
+    STOP_MOTORS;
     return arcLength;
 }
 
+//aligns robot on the specified tile (usually black)
 void alignOnTile(int currentTile ){
-    int leftDistance, rightDistance, correctionDistance, correctionDirection;
+    long leftArcDist, rightArcDist, correctionArcDist;
+    byte correctionPivot;
 
-    leftDistance = countArcLength(ROT_LEFT_PIV, currentTile);
-    rotateArcLength(ROT_RIGHT_PIV, leftDistance);
-    rightDistance = countArcLength(ROT_RIGHT_PIV, currentTile);
-    rotateArcLength(ROT_LEFT_PIV, rightDistance);
+    //measure left arc distance
+    leftArcDist = countArcDistance(LEFT_WHEEL, currentTile, TURN_SPEED);
+    //move back to start
+    rotateArcDistance(LEFT_WHEEL, leftArcDist, -TURN_SPEED);
+    //measure right arc distance
+    rightArcDist = countArcDistance(RIGHT_WHEEL, currentTile, TURN_SPEED);
+    //rotate back to start
+    rotateArcDistance(RIGHT_WHEEL, rightArcDist, -TURN_SPEED);
 
-    if (rightDistance > leftDistance) {
-        correctionDistance = rightDistance - leftDistance;
-        correctionDirection = ROT_RIGHT_PIV;
+    //calculates the correction values
+    if (rightArcDist > leftArcDist){
+        correctionArcDist = rightArcDist - leftArcDist;
+        correctionPivot = LEFT_WHEEL;
     } else {
-        correctionDistance = leftDistance - rightDistance;
-        correctionDirection = ROT_LEFT_PIV;
+        correctionArcDist = leftArcDist - rightArcDist;
+        correctionPivot = RIGHT_WHEEL;
     }
-    rotateArcLength(correctionDirection, (correctionDistance * 10 )/ 10 );
+    //corrects the robots position, "aligns" itself
+    rotateArcDistance(correctionPivot, (correctionArcDist*25)/100, -TURN_SPEED);
 }
 
-void finalStretch(){}
-
-void traverseSmallTiles(){
-     int currentTile, blackTileCount = 0;
-     while(blackTileCount < 14){
-        currentTile = getCurrentTile();
-
-         if ( currentTile == BLACK_TILE){
+//Traverses the specified number of black tiles
+//Which are seperated by non-black tiles
+void crossBlackTiles(int tileLimit){
+     int tileCount = 0;
+     while(tileCount < tileLimit){
+         if (CURRENT_TILE == BLACK_TILE){
             PlayTone(500, 400);
-            blackTileCount++;
+            tileCount++;
+            alignOnTile( BLACK_TILE );
+            GO_FORWARDS; until( ON_TILE( WHITE_TILE ) );
+        } else {
+            GO_FORWARDS; until( ON_TILE ( BLACK_TILE ) );
+            Wait(100); //prevents black flecs on the grey tile triggering black
+            STOP_MOTORS;
         }
-
-        alignOnTile( currentTile );
-        goStraight();
-        until( ! ON( currentTile ) );
-        StopMotors();
     }
 }
 
-void getIntoStartingPosition(){}
+//move and rotate onto the final square
+inline void alignForEnd(){
+    move(15);
+    STOP_MOTORS;
+    donutTurn(90, RIGHT_WHEEL);
+    STOP_MOTORS;
+    move(5);
+    STOP_MOTORS;
+}
+//move and rotate robot for stage 2
+inline void alignForStage2(){
+    GO_FORWARDS; until( ON_TILE( BLACK_TILE ) ); STOP_MOTORS;
+    move(5);
+    Wait(100);
+    donutTurn(90, RIGHT_WHEEL);
+    GO_BACKWARDS; until( ON_TILE( BLACK_TILE ) );
+    GO_BACKWARDS; until( ON_TILE( WHITE_TILE ) ); STOP_MOTORS;
+    GO_FORWARDS; until( ON_TILE( BLACK_TILE ) );
+    Wait(100); STOP_MOTORS;
+}
+//move and rotate robot for stage 1
+inline void alignForStage1(){
+     GO_FORWARDS; until( ON_TILE( WHITE_TILE ) );
+     GO_FORWARDS; until( ON_TILE( BLACK_TILE ) );
+     PlayTone(500, 400);
+     move(4);
+     donutTurn(90, RIGHT_WHEEL);
+}
 
+//main loop
 task main(){
-    setup();
-    getIntoStartingPosition();
-    traverseSmallTiles();
-    finalStretch();
+    SetSensorLight(IN_1, true);
+
+    alignForStage1();
+    crossBlackTiles(13);
+    alignForStage2();
+    crossBlackTiles(8);
+    alignForEnd();
 }

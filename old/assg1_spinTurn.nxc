@@ -1,0 +1,105 @@
+#define BLACK_MAX 50           //light values to be computed at runtime
+
+#define BLACK_TILE 1
+#define WHITE_TILE 0
+#define ON(a) (SENSOR_1 < BLACK_MAX) == a
+
+#define THEN_GO OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+
+#define TURN_SPEED 40          //
+#define STRAIGHT_SPEED 50      //
+
+#define ROT_LEFT_PIV 50       //
+#define ROT_RIGHT_PIV -50     //
+
+#define ARC_INC 5              //
+
+#define LOCKUP_WAIT 100        //Wait time between sequential Motor commands, to prevent motor lockup
+
+inline void goStraight(){
+    OnFwdSync( OUT_BC, STRAIGHT_SPEED, 0);
+}
+
+inline void StopMotors(){
+    OffEx(OUT_BC, RESET_ALL);
+    Wait(LOCKUP_WAIT);
+}
+
+inline int getCurrentTile(){
+    return ON( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE;
+}
+
+void setup() {
+    SetSensorLight(IN_1, true);
+    Wait(500);
+}
+
+void rotateArcLength(int pivot, int arcLength){
+    int currArcLength = 0;
+
+    OnFwdSync(OUT_BC, TURN_SPEED, pivot);
+    while(currArcLength <= arcLength){
+        Wait(ARC_INC);
+        currArcLength++;
+    }
+    StopMotors();
+}
+
+int countArcLength(int pivot, int currentTile){ //needs better name
+    int tileColour, arcLength = 0;
+
+    OnFwdSync(OUT_BC, TURN_SPEED, pivot);
+    while( ON( currentTile ) ){
+        Wait(ARC_INC);
+        arcLength++;
+    }
+    StopMotors();
+
+    return arcLength;
+}
+
+void alignOnTile(int currentTile ){
+    int leftDistance, rightDistance, correctionDistance, correctionDirection;
+
+    leftDistance = countArcLength(ROT_LEFT_PIV, currentTile);
+    rotateArcLength(ROT_RIGHT_PIV, leftDistance);
+    rightDistance = countArcLength(ROT_RIGHT_PIV, currentTile);
+    rotateArcLength(ROT_LEFT_PIV, rightDistance);
+
+    if (rightDistance > leftDistance) {
+        correctionDistance = rightDistance - leftDistance;
+        correctionDirection = ROT_RIGHT_PIV;
+    } else {
+        correctionDistance = leftDistance - rightDistance;
+        correctionDirection = ROT_LEFT_PIV;
+    }
+    rotateArcLength(correctionDirection, (correctionDistance * 10 )/ 10 );
+}
+
+void finalStretch(){}
+
+void traverseSmallTiles(){
+     int currentTile, blackTileCount = 0;
+     while(blackTileCount < 14){
+        currentTile = getCurrentTile();
+
+         if ( currentTile == BLACK_TILE){
+            PlayTone(500, 400);
+            blackTileCount++;
+        }
+
+        alignOnTile( currentTile );
+        goStraight();
+        until( ! ON( currentTile ) );
+        StopMotors();
+    }
+}
+
+void getIntoStartingPosition(){}
+
+task main(){
+    setup();
+    getIntoStartingPosition();
+    traverseSmallTiles();
+    finalStretch();
+}
