@@ -5,9 +5,9 @@ Henry Barnett, Leo Gardiner, Reuben Crimp
 
 it's very difficult to delegate different tasks to different people, when the project isn't very divisible.
 
-We didn't really divide the work up; instead we all created our own code, and then collaborated our semi-working alphas, sharing what we learned and creating a mix-mashed Frankenstein code.
+We didn't really divide the work up logically; instead we all created our own code, and then collaborated our semi-working alphas, sharing what we learned and created a collaborative version.
 
-My contribution was refactoring and clarifying the code, and writing the draft report.
+My main contributions were refactoring and clarifying the code, and the draft report.
 
 Lessons learned? It's hard to give each individual of the team an equal amount of work to do. It's much easier to just do it all by yourself, as there isn't any organization or communication needed.
 

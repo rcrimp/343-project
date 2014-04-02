@@ -1,5 +1,5 @@
   /*
-  * Assignment1.nxc - March 29, 2014
+  * assg1.nxc - March 30, 2014
   * Leo Gardiner, Henry Barnett, Reuben Crimp
   */
 #define MAX(a,b) (a>b)?a:b

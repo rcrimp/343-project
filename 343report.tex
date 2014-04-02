@@ -1,19 +1,25 @@
 \documentclass[a4paper,11pt]{article}
-\usepackage{a4wide}
-\usepackage{multicol}
 \title{COSC343 Assignment 1 - Report}
-\author{Reuben Crimp, Henry Barnett, Leo}
+\author{Leo Gardiner, Henry Barnett, Reuben Crimp}
 \date{\today}
-\usepackage{titling}
-\setlength{\droptitle}{-8em}
-\pagestyle{empty} % no page numbers
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\textwidth}{1in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+%\pagestyle{empty} % no page numbers
+
+
 
 \usepackage{listings}
 \usepackage{color}
+\definecolor{comment}{rgb}{0,0.6,0}
+\definecolor{keyw}{rgb}{0,0.3,0.6}
+\definecolor{define}{rgb}{0,0.5,0.7}
 
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{libfunc}{rgb}{0.85,0,0}
+\definecolor{libdef}{rgb}{0.6,0.0,0}
 
 \lstset{
   language=C,
@@ -23,69 +29,104 @@
   columns=flexible,
   basicstyle={\small\ttfamily},
   numbers=none,
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
+  keywordstyle=\color{keyw},
+  otherkeywords={\#define, sub, task},
+  keywords=[2]{MAX, ABS, BLACK_TILE, WHITE_TILE, ON_TILE, CURRENT_TILE, TURN_SPEED, STRAIGHT_SPEED, LEFT_WHEEL, RIGHT_WHEEL, LOCKUP_WAIT, GO_BACKWARDS, GO_FORWARDS, STOP_MOTORS, LIGHT_TOLERANCE, GET_BLACK, UPDATE_BLACK_THRESHOLD},
+  keywords=[3]{RotateMotorEx, RotateMotor, OnFwdEx, OnFwdSync, OnRevSync, OffEx, ResetAllTachoCounts, MotorTachoCount, PlayTone, Wait, SetSensorLight},
+  keywords=[4]{OUT_B, OUT_C, OUT_BC, RESET_ALL, RESET_NONE, SENSOR_1},
+  keywordstyle={[2]\color{define}},
+  keywordstyle={[3]\color{libfunc}},
+  keywordstyle={[4]\color{libdef}},
+  commentstyle=\color{comment},
   breaklines=true,
-  tabsize=3
+  tabsize=4
 }
+
+%\lstset{emph={  
+%    define, BLACK
+%  },emphstyle={\color{red}\bfseries}
+%}
 
 \begin{document}
 \maketitle
 \section {The Algorithms used}
 
 \subsection{General}
-Align the robot from the start square for stage 1
-\\*Stage 1: Travel across 14 black tiles
-\\*Align the robot for stage 2
-\\*Stage 2: Travel across 8 black tiles.
-\\*Align onto the finish square
+Our overall code is very modularised, which made it easier to debug, and easier to read (arguable).
+\\*\\The final algorithm reads:
+\begin{enumerate}
+\item Get initial (inaccurate) light measurement.
+\item Align the robot from the start square for stage 1.
+\item Adjust light measurement to be more accurate.
+\item Stage 1: Travel across 14 black tiles.
+\item Align the robot for stage 2.
+\item Stage 2: Travel across 8 black tiles.
+\item Align onto the finish square.
+\end{enumerate}
 
 \subsection{Across the black tiles}
-How we traverse the black tiles, is pretty much the same as everyone else.
-When on a black tile, measure the arc length from the current location to either side of the black square, if the arc lengths are imbalanced, then rotate the robot by some value proportional to the imbalance.
-Then drive straight until we hit another black tile. Rinse Repeat.
-
+How we traverse the black tiles, is very simple.
+\\When on a black tile, measure the arc length from the current location to either side of the black tile, if the two arc lengths are imbalanced, then rotate the robot by some value proportional to the imbalance.
+Then drive straight until we hit another black tile. This repeats until 14 black tiles in stage 1, or 8 black tiles in stage 2, have been found.
+\\We chose this algorithm because it is general enough to deal with both sections of the course. It also provides a level of reliability about where the robot will end up both in terms of orientation and position making it easier to manage the transition between the different stages.
+\clearpage
 \section {Problems}
 
-\subsection{Motor Syncing}
-We found that syncing the motors together had unintentional side effects, like random jerky rotations. to combat these side effects we reset both motors and waited a few milliseconds between commands, this prevented sequential motor commands conflicting with eachother.
-
-\subsection{No Floats}
-No floating point data type for algebra i.e pi = 3.14159
-\\*So we take advantage of the int data types large range
-i.e (x * 4.1889) becomes (x * 41889)/10000
-\\*Which is still not ideal.
+\subsection{No floating-point arithmetic}
+No floating-point data type, so instead we took advantage of the int data types large range.
+\begin{lstlisting}
+  x *= 4.1889;
+\end{lstlisting}
+Became
+\begin{lstlisting}
+  x = (x * 41889) / 10000;
+\end{lstlisting}
+Which is still not ideal but does give as much accuracy in the code as we can expect from the motors.
 
 \subsection{Ambient lighting}
 Since the values for white and black can vary depending on the ambient light and the sensor.
-We used the sensor in "active mode" so we measure reflectivity. And we don't try and identify shades of grey, we only check if it's black or not, and even then we don't trust it completely.
+We used the sensor in "active mode" so we measure reflectivity. We also don't try and identify shades of grey, we only check if it's black or not. Even then we don't trust it completely. We check multiple times before saying a tile is black to prevent black flecks on the grey tiles giving a false positive.
+
+\subsection{Servomechanism discrepancies}
+The servos were fairly inaccurate; testing our code on different robots produced highly unexpected results.
+\\We overcame this issue by changing our algorithm completely.
+\\Now it's much slower than our previous versions, and it's more aware of it's surroundings, making it less dependent on consistent hardware.
+\\*Our current build works on all robots that we could test it with.
+
+\subsection{Motor Syncing}
+We found that syncing the motors together had unintentional side effects, like jerky rotations.
+\\To combat these side effects we reset both motors’ tachometer and waited a few milliseconds between commands, this prevented sequential motor commands conflicting with each other.
 
 \clearpage
 \section {The Code}
 
 \begin{lstlisting}
   /*
-  * Assignment1_v8.nxc - March 29, 2014
-  * Reuben, Henry, Leo
+  * Assignment1.nxc - March 29, 2014
+  * Leo Gardiner, Henry Barnett, Reuben Crimp
   */
-  #define BLACK_TILE 1
-  #define WHITE_TILE 0
-  #define ON_TILE(a) (SENSOR_1 < 45) == a //45 = boundary between black and non-black
-  #define CURRENT_TILE (ON_TILE( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE)
+  #define MAX(a,b) (a>b)?a:b
 
   #define TURN_SPEED 40
   #define STRAIGHT_SPEED 50
   #define LEFT_WHEEL OUT_B
   #define RIGHT_WHEEL OUT_C
-  #define LOCKUP_WAIT 50 //ms to wait between sequential sync motor commands
+
+  #define BLACK_TILE 1
+  #define WHITE_TILE 0
+  #define ON_TILE(a) (SENSOR_1 < BlackThreshold) == a
+  #define CURRENT_TILE (ON_TILE( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE)
+
+  #define LIGHT_TOLERANCE 5
+  #define GET_BLACK SENSOR_1 + LIGHT_TOLERANCE
+  #define UPDATE_BLACK_THRESHOLD MAX(BlackThreshold, GET_BLACK)
 
   //these should be inline functions but meh....
   #define GO_BACKWARDS OnRevSync(OUT_BC, STRAIGHT_SPEED, 0)
   #define GO_FORWARDS OnFwdSync(OUT_BC, STRAIGHT_SPEED, 0)
-  #define STOP_MOTORS OffEx(OUT_BC, RESET_ALL); Wait(LOCKUP_WAIT)
+  #define STOP_MOTORS OffEx(OUT_BC, RESET_ALL); Wait(50)
 
-  //Absolute Value
-  long abs(long a){ return ( a > 0 ) ? a : -a; }
+  int BlackThreshold; //global light value
 
   //Move robot by dist (cm) in a straight line
   sub move(int dist){
@@ -95,7 +136,7 @@ We used the sensor in "active mode" so we measure reflectivity. And we don't try
 
   //Rotate the robot about one wheel (pivot) by degrees.
   sub donutTurn(int degrees, byte pivot){
-    RotateMotor(pivot , TURN_SPEED, (degrees*400)/100);
+    RotateMotor(pivot , TURN_SPEED, degrees*4);
     STOP_MOTORS;
   }
 
@@ -141,7 +182,7 @@ We used the sensor in "active mode" so we measure reflectivity. And we don't try
       correctionPivot = RIGHT_WHEEL;
     }
     //corrects the robots position, "aligns" itself
-    rotateArcDistance(correctionPivot, (correctionArcDist*25)/100, -TURN_SPEED);
+    rotateArcDistance(correctionPivot, correctionArcDist/4, -TURN_SPEED);
   }
 
   //Traverses the specified number of black tiles
@@ -156,7 +197,7 @@ We used the sensor in "active mode" so we measure reflectivity. And we don't try
         GO_FORWARDS; until( ON_TILE( WHITE_TILE ) );
       } else {
         GO_FORWARDS; until( ON_TILE ( BLACK_TILE ) );
-        Wait(100); //prevents black flecs on the grey tile triggering black
+        Wait(100); //prevents black flecks on grey tiles, trigging false positive
         STOP_MOTORS;
       }
     }
@@ -174,7 +215,7 @@ We used the sensor in "active mode" so we measure reflectivity. And we don't try
   //move and rotate robot for stage 2
   inline void alignForStage2(){
     GO_FORWARDS; until( ON_TILE( BLACK_TILE ) ); STOP_MOTORS;
-    move(5);
+    move(6);
     Wait(100);
     donutTurn(90, RIGHT_WHEEL);
     GO_BACKWARDS; until( ON_TILE( BLACK_TILE ) );
@@ -188,12 +229,15 @@ We used the sensor in "active mode" so we measure reflectivity. And we don't try
     GO_FORWARDS; until( ON_TILE( BLACK_TILE ) );
     PlayTone(500, 400);
     move(4);
+    BlackThreshold = UPDATE_BLACK_THRESHOLD; //update light value
     donutTurn(90, RIGHT_WHEEL);
   }
 
   //main loop
   task main(){
     SetSensorLight(IN_1, true);
+    Wait(100);
+    BlackThreshold = GET_BLACK; //get initial light value
 
     alignForStage1();
     crossBlackTiles(13);

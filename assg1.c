@@ -2,28 +2,22 @@
   * Assignment1.nxc - March 29, 2014
   * Leo Gardiner, Henry Barnett, Reuben Crimp
   */
-#define MAX(a,b) (a>b)?a:b
+#define BLACK_TILE 1
+#define WHITE_TILE 0
+#define ON_TILE(a) (SENSOR_1 < 45) == a //45 = boundary between black and non-black
+#define CURRENT_TILE (ON_TILE( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE)
 
 #define TURN_SPEED 40
 #define STRAIGHT_SPEED 50
 #define LEFT_WHEEL OUT_B
 #define RIGHT_WHEEL OUT_C
-
-#define BLACK_TILE 1
-#define WHITE_TILE 0
-#define ON_TILE(a) (SENSOR_1 < BlackThreshold) == a
-#define CURRENT_TILE (ON_TILE( BLACK_TILE ) ? BLACK_TILE : WHITE_TILE)
-
-#define LIGHT_TOLERANCE 5
-#define GET_BLACK SENSOR_1 + LIGHT_TOLERANCE
-#define UPDATE_BLACK_THRESHOLD MAX(BlackThreshold, GET_BLACK)
+#define LOCKUP_WAIT 50 //ms to wait between sequential sync motor commands
 
 //these should be inline functions but meh....
 #define GO_BACKWARDS OnRevSync(OUT_BC, STRAIGHT_SPEED, 0)
 #define GO_FORWARDS OnFwdSync(OUT_BC, STRAIGHT_SPEED, 0)
-#define STOP_MOTORS OffEx(OUT_BC, RESET_ALL); Wait(50)
-
-int BlackThreshold; //global light value
+#define STOP_MOTORS OffEx(OUT_BC, RESET_ALL); Wait(LOCKUP_WAIT)
+long abs(long a){ return ( a > 0 ) ? a : -a; }
 
 //Move robot by dist (cm) in a straight line
 sub move(int dist){
@@ -33,7 +27,7 @@ sub move(int dist){
 
 //Rotate the robot about one wheel (pivot) by degrees.
 sub donutTurn(int degrees, byte pivot){
-    RotateMotor(pivot , TURN_SPEED, degrees*4);
+    RotateMotor(pivot , TURN_SPEED, (degrees*400)/100);
     STOP_MOTORS;
 }
 
@@ -79,7 +73,7 @@ void alignOnTile(int currentTile ){
         correctionPivot = RIGHT_WHEEL;
     }
     //corrects the robots position, "aligns" itself
-    rotateArcDistance(correctionPivot, correctionArcDist/4, -TURN_SPEED);
+    rotateArcDistance(correctionPivot, (correctionArcDist*25)/100, -TURN_SPEED);
 }
 
 //Traverses the specified number of black tiles
@@ -94,7 +88,7 @@ void crossBlackTiles(int tileLimit){
             GO_FORWARDS; until( ON_TILE( WHITE_TILE ) );
         } else {
             GO_FORWARDS; until( ON_TILE ( BLACK_TILE ) );
-            Wait(100); //prevents black flecks on grey tiles, trigging false positive
+            Wait(100); //prevents black flecs on the grey tile triggering black
             STOP_MOTORS;
         }
     }
@@ -112,7 +106,7 @@ inline void alignForEnd(){
 //move and rotate robot for stage 2
 inline void alignForStage2(){
     GO_FORWARDS; until( ON_TILE( BLACK_TILE ) ); STOP_MOTORS;
-    move(6);
+    move(5);
     Wait(100);
     donutTurn(90, RIGHT_WHEEL);
     GO_BACKWARDS; until( ON_TILE( BLACK_TILE ) );
@@ -126,15 +120,12 @@ inline void alignForStage1(){
      GO_FORWARDS; until( ON_TILE( BLACK_TILE ) );
      PlayTone(500, 400);
      move(4);
-     BlackThreshold = UPDATE_BLACK_THRESHOLD; //update light value
      donutTurn(90, RIGHT_WHEEL);
 }
 
 //main loop
 task main(){
     SetSensorLight(IN_1, true);
-    Wait(100);
-    BlackThreshold = GET_BLACK; //get initial light value
 
     alignForStage1();
     crossBlackTiles(13);
