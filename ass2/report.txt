@@ -1,0 +1,62 @@
+1) Description of all the parts of your GA design.
+
+2) Description of experimentation succes with various GA settings.
+
+3) Results of the best run presented in the table or a graph as the fitness/cost of the best solution for each generation/population
+
+4) Appendix containing your commented program code.
+
+
+
+
+
+Create a board with only 1 Queen per column and 1 Queen per row. ensuring no vertical or horizontal attacks.
+The given data structure ensures vertical collisions are impossible
+Preventing random board permutions containing duplicate entries, we ensure that the every number in the range [0,BOARD_SIZE), is in the array.
+e.g {0,1,2,3,4,5,6,7} is a permuttion where no 2 queens ocucpy the same row or column.
+
+for such a small board size (8) merely shuffling columns can find a solution in less than a few milliseconds.
+
+Using a genetic algorithm to solve such a small problem is over-kill.
+
+So my implementation will be targeted at far larger boards (1000x1000). though it will work for 8x8 boards, where my algorithm won't be as appreciated.
+
+If we were to "mutatate" our chromosome (board permutation) i.e change one of the array values to a *different* random value, then we are ensuring that we will introduce a new horizontal collision, since we are moving a queen from it's row, to a row occupied by another queen.
+So for my solution a single mutation requires two distinct queens to swap rows.
+i.e swap( array[rand(8)], array[rand(8)] )
+this will not guarantee will guarantee that no new horizintal collisions will be introduced. increasing the probability that the mutation will *strengthen* the fitness rather than *reduce" it
+
+
+
+
+
+
+1,000,000 shuffles
+
+2,258 of 1,000,000 random shuffles were solutions for the N-Queens problem
+
+minimum number of shuffles between solutions: 1
+maximum number of shuffles between solutions: 3678
+average number of shuffles between solutions: 442
+
+22,557 of 10,000,000
+1
+4554
+443
+
+standard deviation meh...
+
+
+
+
+crossover
+single split random crossover
+       failed 0.45028...
+single split crossover derived from parents fitness
+       failed 0.25567...
+
+uniformly distributed crossover derived from parents fitness
+       failed 0.30652... 
+
+three parent crossover
+      if 
