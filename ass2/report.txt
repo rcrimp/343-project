@@ -1,13 +1,3 @@
-1) Description of all the parts of your GA design.
-
-2) Description of experimentation succes with various GA settings.
-
-3) Results of the best run presented in the table or a graph as the fitness/cost of the best solution for each generation/population
-
-4) Appendix containing your commented program code.
-
-
-
 
 
 Create a board with only 1 Queen per column and 1 Queen per row. ensuring no vertical or horizontal attacks.
