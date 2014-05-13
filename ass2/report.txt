@@ -1,30 +1,67 @@
-If we shuffle the board permutation {1,2,3,4,5,6,7,8} we can find a desired permutation (i.e. no attacking pairs) very quickly, usually less than 500 shuffles.
+I have used the data structure described in the assignment spec so veritical collisions are impossible, but horizontal and diagonal collisions are still very much possible.
 
-Personally I think a genetic algorithm is unsuitable for this problem it's overkill. A naive GA will breed fir parents and create unfit children, introduces far more random variance which ensures it takes far longer than the simpler method described above.
+A board permutation admits a horizontal collision iff two queens are placed in the same row, which is expresed as two (or more) array values being the same value, so to combat these collisions in the initial population I ensure that each board permutation has only one each value from 1-8, e,g {1,2,3,4,5,6,7,8}
 
-But nonetheless my goal is to create a genetic algorithm that will find a solution which rivals the "simple" approach above.
+There are 8^8 possible board permutations (for the given data structure), if I ensure that there are no horizontal collisions then there are 8! possible permutions, 92 of which are solutions.
 
-
-
-Create a board with only 1 Queen per column and 1 Queen per row. ensuring no vertical or horizontal attacks.
-The given data structure ensures vertical collisions are impossible
-Preventing random board permutions containing duplicate entries, we ensure that the every number in the range [0,BOARD_SIZE), is in the array.
-e.g {0,1,2,3,4,5,6,7} is a permuttion where no 2 queens ocucpy the same row or column.
-
-for such a small board size (8) merely shuffling columns can find a solution in less than a few milliseconds.
-
-Using a genetic algorithm to solve such a small problem is over-kill.
+92 desired permutations from a pool of 8!, so there is a 92/8! ~ 0.23% chance that a member from the initial population will be a solution.
 
 
-crossover
-single split random crossover
-       fails with probability 0.45028...
-single split crossover, derived from parents fitness
-       fails with probability 0.25567...
-uniformly distributed crossover, derived from parents fitness
-       fails with probability 0.30652... 
-three parent crossover
-       fails with probability 0.34903...
 
-I have chosen a single split crossover, where the splitpoint is a derived from a function of the parents fitness.
-because this method was least likely to cause population stagnation when mutation fails.
+
+multi-start
+if after n generations a solution still hasn't been found, reset and start again.
+
+
+
+
+populaton stagnation
+
+If each member of the population begin to convege to the exact same board permutation, we begin breeding identical parents, which only creates identical children. This is bad as a genetic algorithm relies on variance to find a solution, so the entire algorithm is reliant on the random mutation to fix the entire population which will take several thousand generations, for any reasonable permutation probability.
+
+to combat population stagnation, when creating a child, I first check if the parents are sufficiently similar,
+if they are similar, instead of creating a child from the parents I introduce a random immigrant. This prevents inbreeding and adds varianve to the population if stagnation begins.
+
+
+
+Breeding elements
+
+several methods were tested
+
+two parents, with a single random crossover point
+two parents, with uniform crossover,
+    i.e each gene of the child has equal chance of coming from either parent.
+two parents, with a single crossover point, where the crossover point derived from the fitness of the parents.
+    i.e if both parents have equal fitness, then the crossover is in the middle
+    if one parent is more fit than the other than the crossover point is biased towards allowing more of the fit parents genes into the ch
+    ild.
+random number of parents, between 2 and 8, with random number of crossover points (1-7)
+
+when testing breeding techniques, I used a ranked round robin parent selection method, no mutating only breeding.
+I testing each method 1 million times, stop if solution was found, if generations > 1 million assume failure 
+
+
+I have chosen a single split crossover, where the splitpoint is a derived from the parents fitness, because this method was least likely to cause population stagnation and fail.
+
+
+Parent Selection
+
+I tried several methods of parent selection
+
+For most methods I fitst sorted the population by fitness, this allowed the parent selection method to choose parents base on their relative fitness with ease.
+
+purely stochastic, any random parent
+
+round robin, i.e. every single unorderd pair
+      then replacing the lower half of the sorted population with the best children.  
+succesive pairs, chosen from the sorted population
+          which would breed pairs with exact fitness.
+interleaving pairs, i.e choosing only odd parents from the sorted list
+          which would breed pairs with similar fitness.
+choosing pairs which are seperated by half of the populaton in the sorted list
+         which ensures one parent far more fit than the other.
+
+successive pairs almost always failed, especialy without population stagnation protection, I didn't bother officially testing it.
+
+interleaving pairs performed surprisingly well, same with 
+
