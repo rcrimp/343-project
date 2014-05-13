@@ -1,6 +1,6 @@
-If we shuffle the board permutation {1,2,3,4,5,6,7,8} we can find a desired permutation (i.e. no attacking pairs) very quicly, usually less than 500 shuffles.
+If we shuffle the board permutation {1,2,3,4,5,6,7,8} we can find a desired permutation (i.e. no attacking pairs) very quickly, usually less than 500 shuffles.
 
-Personally I think a genetic algorithm is unsuitable for this problem it's overkill. A naive GA introduces far more random variance which ensures it takes far longer than the simpler method described above.
+Personally I think a genetic algorithm is unsuitable for this problem it's overkill. A naive GA will breed fir parents and create unfit children, introduces far more random variance which ensures it takes far longer than the simpler method described above.
 
 But nonetheless my goal is to create a genetic algorithm that will find a solution which rivals the "simple" approach above.
 

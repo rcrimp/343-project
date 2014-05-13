@@ -2,40 +2,49 @@ import java.util.*;
 import java.lang.Math;
      
 public class Nqueen{
-   public static final int BOARD_SIZE = 8;
-   static final double MUTATION_P = 0.1;
-   /* must be a multiple of 4 if using breedEveryEven */
-   public static final int POPULATION = 100; 
-
    public static int MaxAttackingPairs;
-       
+   public static final int BOARD_SIZE = 8;
+   public static final int POPULATION = 100; /* must be a multiple of 4 if using breedEveryEven */
+   public static final double KEEP_RATIO = 0.2;
+   public static final double MUTATION_P = 0.05;
+   public static final int MAX_GENERATIONS = 100;
+
+   public static List<Board> boards;
+   
    public static void main(String[] args){  
       MaxAttackingPairs = binomial(BOARD_SIZE, 2);
 
-      int gen = 0;
-      List<Board> boards = new ArrayList<Board>();
-
-      for(int i = 0; i < POPULATION; i++)
-         boards.add(new Board());
+      int generations = 0;
+      boards = new ArrayList<Board>();
+      resetAll();
       
-      while(findBest(boards).fitness > 0 && gen < 1000000)
+      while(getBest().fitness > 0)
          {
             //shuffle(boards);
-            sort(boards);
+            sort();
 
-            //breedRandomPair(boards);
-            breedEveryNew(boards);
-            
             //breedEveryPair(boards);
-            
-            gen++;
+            //breedRandomPair(boards);
+            //breedEverySecondPair(boards);
+            //breedEveryNew(boards);
+            breedPercent();
+
+            if(generations++ > MAX_GENERATIONS){
+               resetAll();
+               generations = 0;
+            }
          }
       
-      System.out.println(findBest(boards));
-      System.out.println("generations: " + gen);     
+      System.err.println(getBest());
+      System.out.println(generations);     
    }
 
-   public static void breedEveryPair(List<Board> boards){
+   public static void resetAll(){
+      for(int i = 0; i < POPULATION; i++)
+         boards.add(new Board());
+   }
+   
+   public static void breedEveryPair(){
       for(int i = 0; i < POPULATION/2; i+=2){
          Board[] c = crossover_split(boards.get(i), boards.get(i+1));
          //Board[] c = crossover_uniform(boards.get(i), boards.get(i+1));
@@ -45,25 +54,33 @@ public class Nqueen{
          boards.set(POPULATION - i - 2, c[1]);
       }
    }
-   public static void breedEverySecondPair(List<Board> boards){
+   public static void breedEverySecondPair(){
       for(int i = 0; i < POPULATION; i+=4){
-         Board[] c = crossover_split(boards.get(i), boards.get(i+2));;
+         Board[] c = crossover_split(boards.get(i), boards.get(i+2));
          boards.set(i+1, c[0]);
          boards.set(i+3, c[1]);
       }
    }
-   public static void breedRandomPair(List<Board> boards){
+   public static void breedRandomPair(){
       for(int i = 0; i < POPULATION; i+=2){
          Board[] c = crossover_split(boards.get((int)(Math.random() * POPULATION)), boards.get((int)(Math.random() * POPULATION)));;
          boards.set((int)(Math.random() * POPULATION), c[0]);
          boards.set((int)(Math.random() * POPULATION), c[1]);
       }
    }
-   public static void breedEveryNew(List<Board> boards){
+   public static void breedEveryNew(){
       for(int i = 0; i < POPULATION/4; i++){
          Board[] c = crossover_split(boards.get(i), boards.get(POPULATION/4+i));
          boards.set(POPULATION/2 + i, c[0]);
          boards.set((int)(POPULATION*(0.75)) + i, c[1]);
+      }
+   }
+   public static void breedPercent(){
+      int numParents = (int)(KEEP_RATIO*POPULATION);
+      int numChildren = POPULATION - numParents;
+      for(int i = 0; i < numChildren; i++){
+         Board[] c = crossover_split(boards.get((int)(Math.random() * POPULATION)), boards.get((int)(Math.random() * POPULATION)));
+         boards.set(numParents + i, c[0]);
       }
    }
 
@@ -83,7 +100,7 @@ public class Nqueen{
       return children;
    }
 
-   public static Board findBest(List<Board> boards){
+   public static Board getBest(){
       Board best = boards.get(0);
       for(int i = 1; i < POPULATION; i+=1)
          if(boards.get(i).fitness < best.fitness)
@@ -91,17 +108,17 @@ public class Nqueen{
       return best;
    }
      
-   public static void shuffle(List<Board> list){
+   public static void shuffle(){
       Random random = new Random();
       for(int i = POPULATION-1; i > 0; i--){
          int index = random.nextInt(i+1);
-         Board temp = list.get(index);
-         list.set(index, list.get(i));
-         list.set(i, temp);
+         Board temp = boards.get(index);
+         boards.set(index, boards.get(i));
+         boards.set(i, temp);
       }
    }
-   public static void sort(List<Board> list){
-      Collections.sort(list, new Comparator<Board>(){
+   public static void sort(){
+      Collections.sort(boards, new Comparator<Board>(){
             @Override
                public int compare(Board v1, Board v2) {
                return v1.compareTo(v2);
@@ -165,9 +182,10 @@ class Board {
    }
      
    private void mutate(){
-      if(Math.random() < Nqueen.MUTATION_P){
-         array[(int)(Math.random() * Nqueen.BOARD_SIZE)] =
-            (int)(Math.random() * Nqueen.BOARD_SIZE);
+      for(int n = 0; n < Nqueen.BOARD_SIZE; n++){
+         if(Math.random() < Nqueen.MUTATION_P){
+            array[n] = (int)(Math.random() * Nqueen.BOARD_SIZE);
+         }
       }
    }
        
@@ -176,9 +194,11 @@ class Board {
       int attackingPairs = 0;
       for(int i = 0; i < Nqueen.BOARD_SIZE; i++)
          attackingPairs += countEast(i) + countSouthEast(i) + countNorthEast(i);
-      if (attackingPairs == 0) return 0;
-      if (attackingPairs == Nqueen.MaxAttackingPairs) return 1;
-      return 1 / (double)(Nqueen.MaxAttackingPairs - attackingPairs);
+
+      // if (attackingPairs == 0) return 0;
+      // if (attackingPairs == Nqueen.MaxAttackingPairs) return 1;
+      // return 1 / (double)(Nqueen.MaxAttackingPairs - attackingPairs);
+      return attackingPairs;
    }
    
    //count the queens horizontally left (east) of the current piece
