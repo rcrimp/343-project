@@ -4,11 +4,11 @@ import java.lang.Math;
 public class Nqueen{
    /* settings, with default values */
    public static int BOARD_SIZE = 8;
-   public static int POPULATION = 100;
-   public static int MAX_GENERATIONS = 100;
+   public static int POPULATION = 50;
+   public static int MAX_GENERATIONS = 60;
    public static int MAX_RESTARTS = 10;
-   public static double KEEP_RATIO = 0.20;
-   public static double MUTATION_P = 0.05;
+   public static double KEEP_RATIO = 0.25;
+   public static double MUTATION_P = 0.001;
 
    public static List<Board> boards;
 
@@ -21,18 +21,14 @@ public class Nqueen{
             parseArg(temp, args[c++]); //parse the pair of args
       }
       System.err.println("Begining the Genetic Algorithm with the following settings:" +
-                         "\nboard size:\t" + BOARD_SIZE +
-                         "\npopulation:\t" + POPULATION +
-                         "\ngenerations:\t" + MAX_GENERATIONS +
-                         "\nrestarts:   \t" + MAX_RESTARTS +
-                         "\nkeep ratio: \t" + KEEP_RATIO +
-                         "\nmutation p: \t" + MUTATION_P + "\n");
-      
-      //  Scanner pause = new Scanner(System.in);
-      //  while(pause.hasNext()){}
-      // for(int q = 0; q < 1000000; q++){
-
-      /************************************************************************/
+                         "\nboard size:  " + BOARD_SIZE +
+                         "\npopulation:  " + POPULATION +
+                         "\ngenerations: " + MAX_GENERATIONS +
+                         "\nrestarts:    " + MAX_RESTARTS +
+                         "\nkeep ratio:  " + KEEP_RATIO +
+                         "\nmutation p:  " + MUTATION_P + "\n");
+ 
+      /**************************************************/
       int generations = 0;
       int resets = 0;
       
@@ -43,13 +39,11 @@ public class Nqueen{
       
       while(getBest().fitness > 0){
          /* reorder the list before breeding, optional */
-         sort();
+          sort();
          // shuffle();
 
          /* breed the elements */
-         breedRandom();
-         // breedEveryPair();
-         // breedEverySecondPair();
+          breedRandom();
          // breedPairs();
 
          /* if we exceed the generation limit restart */
@@ -61,9 +55,11 @@ public class Nqueen{
       }
 
       /* print the best board when done */
+
       System.err.println(getBest().toStringPretty());
+      System.err.print("generations: ");
       System.out.println((resets*MAX_GENERATIONS + generations));
-      //}
+
    }
 
    /* resets all elements in the population back to random elements */
@@ -81,13 +77,6 @@ public class Nqueen{
                     crossover_weighted_split(i % numParents, (i+1) % numParents));
       }
    }
-   /* breed only the even elements in the list in successive pairs */
-   public static void breedEverySecondPair(){
-      for(int i = 0; i < POPULATION; i+=4){
-         boards.set(i+1, crossover_weighted_split(i, i+2));
-         boards.set(i+3, crossover_weighted_split(i+2, i));
-      }
-   }
    /* chooses parents at random, then breeds the with random crossovers */
    public static void breedRandom(){
       int numParents = Math.max(2,(int)(KEEP_RATIO*POPULATION));
@@ -99,7 +88,7 @@ public class Nqueen{
          while (r1 == r2)
             r2 = (int)(Math.random()*numParents);
          boards.set(numParents + i,
-                    crossover_random_split(r1, r2));
+                    crossover_uniform(r1, r2));
       }
    }
 
@@ -120,8 +109,9 @@ public class Nqueen{
       //ensure we aren't breeding duplicates
       if(p1 != p2 && parent1.sameBoardAs(parent2))
          return new Board(); 
-      int splitPoint = (int)((Math.min(parent1.fitness, parent2.fitness) /
-                              (double)Math.max(parent1.fitness, parent2.fitness)) * (BOARD_SIZE-1));
+      //int splitPoint = (int)((Math.min(parent1.fitness, parent2.fitness) /
+      //                       (double)Math.max(parent1.fitness, parent2.fitness)) * (BOARD_SIZE-1));
+      int splitPoint = (parent2.fitness / (parent2.fitness + parent2.fitness)) * (BOARD_SIZE-1);
       return new Board(parent1, parent2, splitPoint);
    }
    /* takes the indices of two parents, and breeds them a uniform crossover method */
@@ -131,7 +121,7 @@ public class Nqueen{
       //ensure we aren't breeding duplicates
       if(p1 != p2 && parent1.sameBoardAs(parent2))
          return new Board(); 
-      return new Board(parent1, parent2);
+      return new Board(parent1, parent2, Math.random());
    }
 
    /* finds the most fit elements and returns it */
@@ -243,12 +233,8 @@ class Board {
    }
    /* this constructor creates a board from 2 other 'parent' boards
       uses a uniform distribution crossover method */
-   public Board(Board parent1, Board parent2){
-      array = new int[Nqueen.BOARD_SIZE];
-      Board best = (parent1.fitness > parent2.fitness) ? parent1 : parent2;
-      Board worst = (parent1.fitness < parent2.fitness) ? parent1 : parent2;
-      double p = best.fitness / (worst.fitness + best.fitness);
-      
+   public Board(Board best, Board worst, double p){
+      array = new int[Nqueen.BOARD_SIZE];      
       for(int i = 0; i < Nqueen.BOARD_SIZE; i++){
          if(Math.random() < p)
             array[i] = best.array[i];
@@ -319,13 +305,13 @@ class Board {
    }
 
    /* used to determine if this is identical to another board */
-   public bool sameBoardAs(Board board2){
+   public boolean sameBoardAs(Board board2){
       int count = 0;
       for(int i = 0; i < Nqueen.BOARD_SIZE; i++)
          if (array[i] == board2.array[i])
             count++;
-      return (count == Nqueen.BOARD_SIZE)
-         }
+      return (count == Nqueen.BOARD_SIZE);
+   }
 
    /* nice string representation of the board, in a nice grid */
    public String toStringPretty(){

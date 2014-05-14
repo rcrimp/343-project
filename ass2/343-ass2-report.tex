@@ -37,17 +37,19 @@
 \maketitle
 
 \section*{Genetic Algorithm}
-My Genetic Algorithm is fairly simple, there are a few fancy tricks here and there, but on the whole it conforms to an expected Genetic Algorithm.
+My Genetic Algorithm is fairly simple, there are a few nice optimization, but it's essentially just a bog standard regular Genetic Algorithm.
 
-There are several values which dictate the overall performance, they are
+There are several values which dictate the overall performance, each will initialise with a default value if none are given, which is given below in brackets.
 \begin{itemize}
-  \item Board Size, the chess board sides length (default = 8)
-  \item Population Size, the number of elements the GA operates on (default = 100)
-  \item Max Generations, is the largest number of generations the GA will perform before restarting
-  \item MAX RESTARTS = 10;
-  \item KEEP RATIO = 0.20;
-  \item MUTATION P = 0.05;
+  \item Board Size - (8) size of the chess board.
+  \item Population Size - (50) size of the population.
+  \item Max Generations - (60) number of generations before a restart.
+  \item Max Restarts - (10) number of restarts before failure.
+  \item Keep Ratio - (0.25) percent of the population to preserve for the next generation.
+  \item Mutation P - (0.001) probability that a generated children will mutate.
 \end{itemize}
+
+The settings can be changed without compiling by calling passing the values as args, the program will use default values if no args are given.
 
 \subsection*{Initial Population}
 My method ensures that each element in the initial population has no vertical or horizontal collisions whilst maintaing uniform variance. This means that the GA can find a solution very fast as each element starts off very fit. 
@@ -56,55 +58,53 @@ Vertical collsions are impossble when using the recomended data structure. board
 \subsection*{Population Stagnation}
 If every elements in the population converges to the same element, we essentially start breeding clones only to get more clones. The decreasing variance in the population means deriving a solution may never happen.
 
-My method combats the likely decrease in varaiance in several ways.
+My method combats the likely decrease in varaiance in 4 ways.
 \subsubsection*{1 Mutatation}
 For each child that we add to our populatin there is a chance that the any of the values in the array will ``mutate'' to any random value between 1-8. This increasing variance in individual elements.
 \subsubsection*{2 Random Immigrants}
 We can at any point add new elements to the population, since new elements are created with uniform variance, adding will almost always increase the variance of the population.
 Exactly when and where we add them is described below.
-\subsubsection*{3 Don't Breed if Clones}
+\subsubsection*{3 Don't Breed Clones}
 Before breeding parents, check how similar they are, if they are identical then we replace one with a random immigrant. We can now breed the two parents with a greatly decreased chance of introducing a clone to the population.
-\subsubsection*{4 Multi Start}
-If after a certain number of generations a solution has yet to be found, reset the entire population. So if any of the above methods fail to prevent stagnation for the current run, then we can start again. This is more of a fail safe and does not usually gets executed.
+\subsubsection*{4 Restart}
+If after a certain number of generations a solution has yet to be found, reset the entire population. So if any of the above methods fail to prevent stagnation, then we can start again.
 
-\subsection*{Crossover Methods}
-\subsection*{Parent Selection Methods}
+This is more of a fail safe and does not usually get executed.
 
+\subsection*{Crossover Method}
+The final method uses uniform crossover method to breed parents.
+
+Each of the 8 queens in the child are independently chosen from either of the given parents with a random probability.
+
+Whilst other methods were just as good in most test cases, this method continued to work when the population size was drasitcally reduced.
+\subsection*{Parent Selection Method}
+The final selection method first ranks all the elements by fitness, then random parents are chosen from the top portion (the fitter elements), where the top portions size is calculated fromt the ``keep rate''.
+
+\pagebreak
 \section*{Experiments}
-a description of expirimentation success with various settings.
+I experimented heavily on individual units, as well as tweaking the settings given above.
+
 \subsection*{Crossover Methods}
 
-several methods were tested
-
-two parents, with a single random crossover point
-two parents, with uniform crossover,
-i.e each gene of the child has equal chance of coming from either parent.
-two parents, with a single crossover point, where the crossover point derived from the fitness of the parents.
-i.e if both parents have equal fitness, then the crossover is in the middle
-if one parent is more fit than the other than the crossover point is biased towards allowing more of the fit parents genes into the ch
-ild.
-random number of parents, between 2 and 8, with random number of crossover points (1-7)
-
-when testing breeding techniques, I used a ranked round robin parent selection method, no mutating only breeding.
-I testing each method 1 million times, stop if solution was found, if generations > 1 million assume failure 
+I tested several crossover methods, the tests were conducted with a ranked round robin parent selection.
+The test was deemed a failure if the generations exceeded 1,000,000 without finding a solution.
 
 
-I have chosen a single split crossover, where the splitpoint is a derived from the parents fitness, because this method was least likely to cause population stagnation and fail
+\begin{tabular}{l | l | r }
+parents & method & failure rate \\ \hline
+2 & single random crossover & 0.45028 \\
+2 & single fitness weighted crossover & 0.28652 \\
+2 & uniform crossover (p = 0.5) & 0.35567 \\
+2 & uniform crossover (p = random) & 0.24504 \\
+3 & 2 random crossover points & 0.34903 \\
+8 & each parent contributes only once & 0.54120 \\
+\end{tabular}
 
-single split random crossover
-failed with probability 0.45028...
-uniformly distributed crossover
-failed with probability 0.30652... 
-single split crossover, derived from parents fitness
-failed with probability 0.25567...
-three parent crossover
-failed with probability 0.34903...
-random parent crossover
-failed with probability 0.5932...
 \subsection*{Parent Selection Methods}
+
 I tried several methods of parent selection
 
-For most methods I fitst sorted the population by fitness, this allowed the parent selection method to choose parents base on their relative fitness with ease.
+For most methods I fitst sorted the population by fitness, this allowed the parent selection method to choose parents base on their relative fitness with ease, like a mock tournament.
 
 purely stochastic, any random parent
 
@@ -122,12 +122,15 @@ successive pairs almost always failed, especialy without population stagnation p
 interleaving pairs performed surprisingly well, same with 
 
 \section*{Best Solution}
-Results of the best run, presented in a table or graph as the fitness/cost of the best solution for each generation/population.
-i.e graph the most fit over the generations
+The final program can find a solution after 0 generations, but it usually takes on average 23.9 generations with the default values.
 
-\section*{The Code}
-\addtolength{\oddsidemargin}{-.5in}
-\addtolength{\evensidemargin}{-.5in}
+\pagebreak
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{3in}
+\pagestyle{empty}
+
+%\section*{The Code}
 \begin{lstlisting}
   import java.util.*;
   import java.lang.Math;
@@ -135,11 +138,11 @@ i.e graph the most fit over the generations
   public class Nqueen{
     /* settings, with default values */
     public static int BOARD_SIZE = 8;
-    public static int POPULATION = 100;
-    public static int MAX_GENERATIONS = 100;
+    public static int POPULATION = 50;
+    public static int MAX_GENERATIONS = 60;
     public static int MAX_RESTARTS = 10;
-    public static double KEEP_RATIO = 0.20;
-    public static double MUTATION_P = 0.05;
+    public static double KEEP_RATIO = 0.25;
+    public static double MUTATION_P = 0.001;
 
     public static List<Board> boards;
 
@@ -152,14 +155,14 @@ i.e graph the most fit over the generations
         parseArg(temp, args[c++]); //parse the pair of args
       }
       System.err.println("Begining the Genetic Algorithm with the following settings:" +
-      "\textbackslash nboard size:\textbackslash t" + BOARD_SIZE +
-      "\textbackslash npopulation:\textbackslash t" + POPULATION +
-      "\textbackslash ngenerations:\textbackslash t" + MAX_GENERATIONS +
-      "\textbackslash nrestarts:   \textbackslash t" + MAX_RESTARTS +
-      "\textbackslash nkeep ratio: \textbackslash t" + KEEP_RATIO +
-      "\textbackslash nmutation p: \textbackslash t" + MUTATION_P + "\textbackslash n");
+      "\nboard size:  " + BOARD_SIZE +
+      "\npopulation:  " + POPULATION +
+      "\ngenerations: " + MAX_GENERATIONS +
+      "\nrestarts:    " + MAX_RESTARTS +
+      "\nkeep ratio:  " + KEEP_RATIO +
+      "\nmutation p:  " + MUTATION_P + "\n");        
 
-        /************************************************************************/
+        /**************************************************/
         int generations = 0;
         int resets = 0;
         
@@ -175,8 +178,6 @@ i.e graph the most fit over the generations
 
           /* breed the elements */
           breedRandom();
-          // breedEveryPair();
-          // breedEverySecondPair();
           // breedPairs();
 
           /* if we exceed the generation limit restart */
@@ -189,6 +190,7 @@ i.e graph the most fit over the generations
 
         /* print the best board when done */
         System.err.println(getBest().toStringPretty());
+        System.err.print("generations: ");
         System.out.println((resets*MAX_GENERATIONS + generations));
     }
 
@@ -207,13 +209,6 @@ i.e graph the most fit over the generations
         crossover_weighted_split(i % numParents, (i+1) % numParents));
       }
     }
-    /* breed only the even elements in the list in successive pairs */
-    public static void breedEverySecondPair(){
-      for(int i = 0; i < POPULATION; i+=4){
-        boards.set(i+1, crossover_weighted_split(i, i+2));
-        boards.set(i+3, crossover_weighted_split(i+2, i));
-      }
-    }
     /* chooses parents at random, then breeds the with random crossovers */
     public static void breedRandom(){
       int numParents = Math.max(2,(int)(KEEP_RATIO*POPULATION));
@@ -225,7 +220,7 @@ i.e graph the most fit over the generations
         while (r1 == r2)
         r2 = (int)(Math.random()*numParents);
         boards.set(numParents + i,
-        crossover_random_split(r1, r2));
+        crossover_uniform(r1, r2));
       }
     }
 
@@ -246,8 +241,9 @@ i.e graph the most fit over the generations
       //ensure we aren't breeding duplicates
       if(p1 != p2 && parent1.sameBoardAs(parent2))
       return new Board(); 
-      int splitPoint = (int)((Math.min(parent1.fitness, parent2.fitness) /
-      (double)Math.max(parent1.fitness, parent2.fitness)) * (BOARD_SIZE-1));
+      //int splitPoint = (int)((Math.min(parent1.fitness, parent2.fitness) /
+      //                       (double)Math.max(parent1.fitness, parent2.fitness)) * (BOARD_SIZE-1));
+      int splitPoint = (parent2.fitness / (parent2.fitness + parent2.fitness)) * (BOARD_SIZE-1);
       return new Board(parent1, parent2, splitPoint);
     }
     /* takes the indices of two parents, and breeds them a uniform crossover method */
@@ -257,7 +253,7 @@ i.e graph the most fit over the generations
       //ensure we aren't breeding duplicates
       if(p1 != p2 && parent1.sameBoardAs(parent2))
       return new Board(); 
-      return new Board(parent1, parent2);
+      return new Board(best, worst, Math.random());
     }
 
     /* finds the most fit elements and returns it */
@@ -289,9 +285,53 @@ i.e graph the most fit over the generations
       });
     }
 
-    public static void parseArg(String type, String value){}
-    public static int stringToInt(String s){}
-    public static double stringToDouble(String s){}
+    /* parses the args, stupidly simple lol */
+    public static void parseArg(String type, String value){
+      switch (type.toLowerCase().charAt(0)){
+        case 'b':
+        BOARD_SIZE = Math.max(1,stringToInt(value));
+        break;
+        case 'p':
+        POPULATION = Math.max(1,stringToInt(value));
+        break;
+        case 'g':
+        MAX_GENERATIONS = Math.max(1,stringToInt(value));
+        break;
+        case 'r':
+        MAX_RESTARTS = Math.max(0,stringToInt(value));
+        break;
+        case 'k':
+        KEEP_RATIO = stringToDouble(value);
+        if(KEEP_RATIO > 1) KEEP_RATIO = 1;
+        break;
+        case 'm':
+        MUTATION_P = stringToDouble(value);
+        if(MUTATION_P < 0f) MUTATION_P = 0f;
+        if(MUTATION_P > 1f) MUTATION_P = 1f;
+        break;
+        default:
+        System.err.println("ERR: unkown arg: " + type);
+      }
+      
+    }
+    public static int stringToInt(String s){
+      try {
+        return Integer.parseInt(s);
+      } catch (NumberFormatException e) {
+        System.err.println("ERR: Argument" + s + " must be an integer.");
+        System.exit(1);
+      }
+      return 0;
+    }
+    public static double stringToDouble(String s){
+      try {
+        return Double.parseDouble(s);
+      } catch (NumberFormatException e) {
+        System.err.println("Argument" + s + " must be a double.");
+        System.exit(1);
+      }
+      return 0;
+    }
   }
 
   /* a Board object describes a particular board permutation using an array
@@ -325,12 +365,8 @@ i.e graph the most fit over the generations
     }
     /* this constructor creates a board from 2 other 'parent' boards
     uses a uniform distribution crossover method */
-    public Board(Board parent1, Board parent2){
-      array = new int[Nqueen.BOARD_SIZE];
-      Board best = (parent1.fitness > parent2.fitness) ? parent1 : parent2;
-      Board worst = (parent1.fitness < parent2.fitness) ? parent1 : parent2;
-      double p = best.fitness / (worst.fitness + best.fitness);
-      
+    public Board(Board best, Board worst, double p){
+      array = new int[Nqueen.BOARD_SIZE];      
       for(int i = 0; i < Nqueen.BOARD_SIZE; i++){
         if(Math.random() < p)
         array[i] = best.array[i];
@@ -401,12 +437,12 @@ i.e graph the most fit over the generations
     }
 
     /* used to determine if this is identical to another board */
-    public bool sameBoardAs(Board board2){
+    public boolean sameBoardAs(Board board2){
       int count = 0;
       for(int i = 0; i < Nqueen.BOARD_SIZE; i++)
       if (array[i] == board2.array[i])
       count++;
-      return (count == Nqueen.BOARD_SIZE)
+      return (count == Nqueen.BOARD_SIZE);
     }
 
     /* nice string representation of the board, in a nice grid */
@@ -421,9 +457,9 @@ i.e graph the most fit over the generations
           grid += "_|";
         }
         if(col+1 < Nqueen.BOARD_SIZE)
-        grid += "\textbackslash n";
+        grid += "\n";
       }
-      return toString() + "\textbackslash n" + grid + "\textbackslash nfitness: " + fitness;
+      return toString() + "\n" + grid + "\nfitness: " + fitness;
     }
 
     /* simple string representation of the board */
@@ -437,6 +473,7 @@ i.e graph the most fit over the generations
         return s + "]";
     }
   }
+
 \end{lstlisting}
 
 \end{document}
