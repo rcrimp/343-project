@@ -39,30 +39,31 @@
 \section*{Genetic Algorithm}
 My Genetic Algorithm is fairly simple, there are a few nice optimization, but it's essentially just a bog standard regular Genetic Algorithm.
 
-There are several values which dictate the overall performance, each will initialise with a default value if none are given, which is given below in brackets.
+There are several values which dictate the overall performance, their default values ares shown below in brackets.
 \begin{itemize}
-  \item Board Size - (8) size of the chess board.
-  \item Population Size - (50) size of the population.
-  \item Max Generations - (60) number of generations before a restart.
-  \item Max Restarts - (10) number of restarts before failure.
-  \item Keep Ratio - (0.25) percent of the population to preserve for the next generation.
-  \item Mutation P - (0.001) probability that a generated children will mutate.
+\item Board Size - (8) size of the chess board.
+\item Population Size - (50) size of the population.
+\item Max Generations - (60) number of generations before a restart.
+\item Max Restarts - (10) number of restarts before failure.
+\item Keep Ratio - (0.25) percent of the population used to seed the next generation.
+\item Mutation P - (0.001) probability that a generated child will mutate.
 \end{itemize}
 
 The settings can be changed without compiling by calling passing the values as args, the program will use default values if no args are given.
 
 \subsection*{Initial Population}
-My method ensures that each element in the initial population has no vertical or horizontal collisions whilst maintaing uniform variance. This means that the GA can find a solution very fast as each element starts off very fit. 
+My method ensures that each element in the initial population has no vertical or horizontal collisions whilst maintain uniform variance. This means that the GA can find a solution very fast as each element starts off very fit. 
 
-Vertical collsions are impossble when using the recomended data structure. board permutations with horizontal collisions are omitted by ensuring every number from 1 to 8 appears in the data structure, i.e. every column is occupied by 1 and only 1 queen.
+Vertical collisions are impossible when using the recommended data structure. board permutations with horizontal collisions are omitted by ensuring every number from 1 to 8 appears in the data structure, i.e. every column is occupied by 1 and only 1 queen.
+
 \subsection*{Population Stagnation}
 If every elements in the population converges to the same element, we essentially start breeding clones only to get more clones. The decreasing variance in the population means deriving a solution may never happen.
 
-My method combats the likely decrease in varaiance in 4 ways.
-\subsubsection*{1 Mutatation}
-For each child that we add to our populatin there is a chance that the any of the values in the array will ``mutate'' to any random value between 1-8. This increasing variance in individual elements.
+My method combats the likely decrease in variance in 4 ways.
+\subsubsection*{1 Mutation}
+For each child that we create there is a chance that any of the values in the array will ``mutate'' to any random value between 1-8.
 \subsubsection*{2 Random Immigrants}
-We can at any point add new elements to the population, since new elements are created with uniform variance, adding will almost always increase the variance of the population.
+We can at any point add new elements to the population, since new elements are created with uniform variance, this will almost always increase the variance of the population.
 Exactly when and where we add them is described below.
 \subsubsection*{3 Don't Breed Clones}
 Before breeding parents, check how similar they are, if they are identical then we replace one with a random immigrant. We can now breed the two parents with a greatly decreased chance of introducing a clone to the population.
@@ -72,57 +73,59 @@ If after a certain number of generations a solution has yet to be found, reset t
 This is more of a fail safe and does not usually get executed.
 
 \subsection*{Crossover Method}
-The final method uses uniform crossover method to breed parents.
+The final method uses a uniform crossover method to breed parents.
 
-Each of the 8 queens in the child are independently chosen from either of the given parents with a random probability.
+Each of the 8 queens in the child are chosen independently from one of the given parents with a random probability.
 
-Whilst other methods were just as good in most test cases, this method continued to work when the population size was drasitcally reduced.
+Whilst other methods were equally good in most test cases, this method continued to work when the population size was drastically reduced.
 \subsection*{Parent Selection Method}
-The final selection method first ranks all the elements by fitness, then random parents are chosen from the top portion (the fitter elements), where the top portions size is calculated fromt the ``keep rate''.
+The final selection method first ranks all the elements by fitness, then random parents are chosen from the top portion (the fitter elements), where the top portions size is calculated from the ``keep rate''.
 
-\pagebreak
 \section*{Experiments}
-I experimented heavily on individual units, as well as tweaking the settings given above.
+Alot of experimenting, trying new  methods, modifying others, as well as tweaking the settings given above.
 
 \subsection*{Crossover Methods}
-
 I tested several crossover methods, the tests were conducted with a ranked round robin parent selection.
 The test was deemed a failure if the generations exceeded 1,000,000 without finding a solution.
 
 
 \begin{tabular}{l | l | r }
-parents & method & failure rate \\ \hline
-2 & single random crossover & 0.45028 \\
-2 & single fitness weighted crossover & 0.28652 \\
-2 & uniform crossover (p = 0.5) & 0.35567 \\
-2 & uniform crossover (p = random) & 0.24504 \\
-3 & 2 random crossover points & 0.34903 \\
-8 & each parent contributes only once & 0.54120 \\
+  parents & method & failure rate \\ \hline
+  2 & single random crossover & 0.45028 \\
+  2 & single fitness weighted crossover & 0.28652 \\
+  2 & uniform crossover (p = 0.5) & 0.35567 \\
+  2 & uniform crossover (p = random) & 0.24504 \\
+  3 & 2 random crossover points & 0.34903 \\
+  8 & each parent contributes only once & 0.54120 \\
 \end{tabular}
 
 \subsection*{Parent Selection Methods}
 
 I tried several methods of parent selection
 
-For most methods I fitst sorted the population by fitness, this allowed the parent selection method to choose parents base on their relative fitness with ease, like a mock tournament.
+For most methods I first sorted the population by fitness, this allowed the parent selection method to choose parents base on their relative fitness with ease, like a mock tournament.\\
 
-purely stochastic, any random parent
+successive pairs, chosen from the sorted population, this almost always breed pairs with exact fitness. \\
 
-round robin, i.e. every single unorderd pair
-then replacing the lower half of the sorted population with the best children.  
-succesive pairs, chosen from the sorted population
-which would breed pairs with exact fitness.
-interleaving pairs, i.e choosing only odd parents from the sorted list
-which would breed pairs with similar fitness.
-choosing pairs which are seperated by half of the populaton in the sorted list
-which ensures one parent far more fit than the other.
+This almost always failed, especially without population stagnation protection, I didn't bother officially testing it. \\
 
-successive pairs almost always failed, especialy without population stagnation protection, I didn't bother officially testing it.
+interleaving pairs, i.e choosing only odd parents from the sorted list which would breed pairs with similar fitness.
+This performed better than successive pairs, but it was still prone to population stagnation. \\
 
-interleaving pairs performed surprisingly well, same with 
+purely stochastic, any random parent, almost too random. \\
+
+So I modified it to choose random fit elements, so sometimes it breeds parents with identical fitness, and sometimes parents whose fitness differs by some degree.
 
 \section*{Best Solution}
-The final program can find a solution after 0 generations, but it usually takes on average 23.9 generations with the default values.
+The final genetic algorithm is quite fast, with the default values it takes on average ~24 generations to find a solution, with average generation length is ~2 milliseconds, I'd say it's fairly optimal. \\
+
+Graphing my ``best'' results would make a very boring graph, since sometimes my method will find solution is found before breeding has begun.
+
+So instead here is the first twenty numbers produced by running ``./run-tests.sj'', they were the number of generations that were executed to find a solution.
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|} \hline
+  6 & 28 & 47 & 85 & 52 & 11 & 87 & 42 & 18 & 54 & 0 & 32 & 18 & 13 & 11 & 29 & 6 & 21 & 30 & 8 \\ \hline
+\end{tabular}
 
 \pagebreak
 \addtolength{\oddsidemargin}{-.875in}
@@ -162,36 +165,36 @@ The final program can find a solution after 0 generations, but it usually takes 
       "\nkeep ratio:  " + KEEP_RATIO +
       "\nmutation p:  " + MUTATION_P + "\n");        
 
-        /**************************************************/
-        int generations = 0;
-        int resets = 0;
-        
-        boards = new ArrayList<Board>();
-        for(int i = 0; i < POPULATION; i++){
-          boards.add(new Board()); // fill the list with random elements
+      /**************************************************/
+      int generations = 0;
+      int resets = 0;
+      
+      boards = new ArrayList<Board>();
+      for(int i = 0; i < POPULATION; i++){
+        boards.add(new Board()); // fill the list with random elements
+      }
+      
+      while(getBest().fitness > 0){
+        /* reorder the list before breeding, optional */
+        sort();
+        // shuffle();
+
+        /* breed the elements */
+        breedRandom();
+        // breedPairs();
+
+        /* if we exceed the generation limit restart */
+        if(generations++ > MAX_GENERATIONS && resets < 10){ 
+          resetAll();
+          generations = 0;
+          resets++;
         }
-        
-        while(getBest().fitness > 0){
-          /* reorder the list before breeding, optional */
-          sort();
-          // shuffle();
+      }
 
-          /* breed the elements */
-          breedRandom();
-          // breedPairs();
-
-          /* if we exceed the generation limit restart */
-          if(generations++ > MAX_GENERATIONS && resets < 10){ 
-            resetAll();
-            generations = 0;
-            resets++;
-          }
-        }
-
-        /* print the best board when done */
-        System.err.println(getBest().toStringPretty());
-        System.err.print("generations: ");
-        System.out.println((resets*MAX_GENERATIONS + generations));
+      /* print the best board when done */
+      System.err.println(getBest().toStringPretty());
+      System.err.print("generations: ");
+      System.out.println((resets*MAX_GENERATIONS + generations));
     }
 
     /* resets all elements in the population back to random elements */
